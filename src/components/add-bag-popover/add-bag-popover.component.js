@@ -1,17 +1,24 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import { addItem } from "../../redux/cart/cart.actions";
+import { addItem, toggleCartHidden } from "../../redux/cart/cart.actions";
 import CustomButton from "../custom-button/custom-button.component";
 
 import "./add-bag-popover.styles.scss";
 
-const AddBagPopover = ({ item, setShowPopover, show, addItem }) => {
+const AddBagPopover = ({
+  item,
+  setShowPopover,
+  show,
+  addItem,
+  toggleCartHidden,
+}) => {
   const [size, setSize] = useState();
 
   const handleAddToBag = () => {
     addItem(item);
     setShowPopover(!show);
+    toggleCartHidden();
   };
   return (
     <div className="collection-item">
@@ -55,6 +62,7 @@ const AddBagPopover = ({ item, setShowPopover, show, addItem }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   addItem: (item) => dispatch(addItem(item)),
+  toggleCartHidden: () => dispatch(toggleCartHidden()),
 });
 
 export default connect(null, mapDispatchToProps)(AddBagPopover);
