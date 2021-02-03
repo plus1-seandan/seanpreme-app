@@ -4,10 +4,13 @@ import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 
 import "./header.styles.scss";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+import { selectCurrentUser } from "../../redux/user/user.selectors";
+import { selectCartHidden } from "../../redux/cart/cart.selectors";
 
 const Header = ({ currUser, hidden }) => {
   return (
@@ -57,11 +60,10 @@ const Header = ({ currUser, hidden }) => {
   );
 };
 
-const mapStateToProps = ({ user: { currUser }, cart: { hidden } }) => {
-  return {
-    currUser,
-    hidden,
-  };
-};
+const mapStateToProps = (state) =>
+  createStructuredSelector({
+    currUser: selectCurrentUser,
+    hidden: selectCartHidden,
+  });
 
 export default connect(mapStateToProps)(withRouter(Header));

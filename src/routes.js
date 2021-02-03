@@ -6,10 +6,10 @@ import HomePage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
 import Header from "./components/header/header.component";
 import LoginRegisterPage from "./pages/login-register/login-register.components";
+import { selectCurrentUser } from "./redux/user/user.selectors";
 
 class Routes extends React.Component {
   render() {
-    console.log(this.props);
     return (
       <div>
         <Header />
@@ -29,7 +29,7 @@ class Routes extends React.Component {
   }
 }
 
-const mapStateToProps = ({ user }) => ({
-  currUser: user.currUser,
+const mapStateToProps = (state) => ({
+  currUser: selectCurrentUser(state),
 });
 export default connect(mapStateToProps)(Routes);
