@@ -22,7 +22,7 @@ const Collection = ({ title, items }) => {
         {items
           .filter((item, idx) => idx < 12)
           .map((item) => (
-            <CollectionItem key={item.id} {...item} />
+            <CollectionItem key={item.id} item={item} />
           ))}
       </div>
     </div>

@@ -3,7 +3,7 @@ import axios from "axios";
 import { GoogleLogin } from "react-google-login";
 import { connect } from "react-redux";
 
-import CustomButton from "../collection/custom-button/custom-button.component";
+import CustomButton from "../custom-button/custom-button.component";
 import FormInput from "../form-input/form-input.component";
 import "./login.styles.scss";
 import { setCurrUser } from "../../redux/user/user.actions";
@@ -83,23 +83,27 @@ class Login extends React.Component {
             handleChange={this.handleChange}
           />
           <div className="login__buttons">
-            <CustomButton onClick={this.handleTest}>Login</CustomButton>
-            <GoogleLogin
-              clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-              render={(renderProps) => (
-                <CustomButton
-                  isGoogleSignIn
-                  onClick={renderProps.onClick}
-                  disabled={renderProps.disabled}
-                >
-                  Sign In With Google
-                </CustomButton>
-              )}
-              buttonText="Login"
-              onSuccess={this.responseGoogle}
-              onFailure={this.responseGoogle}
-              cookiePolicy={"single_host_origin"}
-            />
+            <div>
+              <CustomButton onClick={this.handleTest}>Login</CustomButton>
+            </div>
+            <div>
+              <GoogleLogin
+                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                render={(renderProps) => (
+                  <CustomButton
+                    isGoogleSignIn
+                    onClick={renderProps.onClick}
+                    disabled={renderProps.disabled}
+                  >
+                    Google
+                  </CustomButton>
+                )}
+                buttonText="Login"
+                onSuccess={this.responseGoogle}
+                onFailure={this.responseGoogle}
+                cookiePolicy={"single_host_origin"}
+              />
+            </div>
           </div>
         </form>
       </div>

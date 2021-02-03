@@ -1,0 +1,36 @@
+.collection-item {
+  position: relative;
+}
+.add-bag-popover {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid black;
+  background-color: white;
+  top: -340px;
+  z-index: 3;
+
+  span {
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+  .add-bag-button {
+    padding: 1rem 0;
+    width: 100%;
+    border-bottom: 1px solid grey;
+    list-style: none;
+  }
+  .add-bag-button:focus {
+    border: 1px solid red;
+    outline: 0;
+    background-color: tan;
+  }
+
+  button {
+    margin-top: auto;
+    width: 100%;
+    font-size: 12px;
+  }
+}

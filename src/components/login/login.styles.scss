@@ -18,6 +18,9 @@
 
   &__buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    div {
+      margin: 1rem;
+    }
   }
 }
