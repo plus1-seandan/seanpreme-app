@@ -1,0 +1,21 @@
+.checkout-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .checkout-header {
+    height: 20%;
+  }
+  .checkout-body {
+    height: 80%;
+    display: flex;
+
+    .checkout-items {
+      width: 50%;
+    }
+    .checkout-payment {
+      width: 50%;
+      background-color: purple;
+    }
+  }
+}

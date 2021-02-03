@@ -1,0 +1,19 @@
+.items-tabs {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 1rem;
+
+  .item {
+    flex-grow: 1;
+    border-bottom: 2px solid black;
+  }
+  .quantity {
+    padding: 0 3rem;
+    border-bottom: 2px solid black;
+  }
+  .price {
+    padding: 0 1rem;
+    border-bottom: 2px solid black;
+  }
+}
