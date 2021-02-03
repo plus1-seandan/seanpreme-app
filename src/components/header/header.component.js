@@ -4,10 +4,12 @@ import LocalMallIcon from "@material-ui/icons/LocalMall";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { withRouter, Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import "./header.styles.scss";
 
-const Header = () => {
+const Header = ({ currUser }) => {
+  console.log({ currUser });
   return (
     <div className="header">
       <div className="header__tab">
@@ -22,7 +24,9 @@ const Header = () => {
           <div className="header__main__menu">
             <MenuIcon fontSize="large" />
           </div>
-          <div className="header__main__logo">Logo </div>
+          <Link to="/">
+            <div className="header__main__logo">Logo </div>
+          </Link>
         </div>
         <div className="header__main__center">
           <div className="header__main__search">Search</div>
@@ -35,9 +39,13 @@ const Header = () => {
             <FavoriteBorderIcon fontSize="large" />
           </div>
           <Link to="/sign-in">
-            <div className="header__main__icon">
-              <PersonOutlineIcon fontSize="large" />
-            </div>
+            {currUser ? (
+              <div className="header__main__icon">{currUser.firstName}</div>
+            ) : (
+              <div className="header__main__icon">
+                <PersonOutlineIcon fontSize="large" />
+              </div>
+            )}
           </Link>
           <div className="header__main__icon">
             <LocalMallIcon fontSize="large" />
@@ -48,4 +56,11 @@ const Header = () => {
   );
 };
 
-export default withRouter(Header);
+const mapStateToProps = (state) => {
+  console.log({ state });
+  return {
+    currUser: state.user.currUser,
+  };
+};
+
+export default connect(mapStateToProps)(Header);

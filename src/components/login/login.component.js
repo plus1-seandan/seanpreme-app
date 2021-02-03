@@ -1,28 +1,47 @@
 import React from "react";
 import axios from "axios";
 import { GoogleLogin } from "react-google-login";
+import { connect } from "react-redux";
+
 import CustomButton from "../collection/custom-button/custom-button.component";
 import FormInput from "../form-input/form-input.component";
-
 import "./login.styles.scss";
+import { setCurrUser } from "../../redux/user/user.actions";
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      firstName: "",
-      lastName: "",
       email: "",
       password: "",
     };
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
+
+    const { setCurrUser } = this.props;
+
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/auth/login",
+        this.state,
+        { withCredentials: "include" }
+      );
+      if (res.data) {
+        setCurrUser(res.data);
+      }
+      this.setState({
+        email: "",
+        password: "",
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
   responseGoogle = async (response) => {
-    const res = await fetch("http://localhost:5000/google", {
+    const res = await fetch("http://localhost:5000/auth/google", {
       method: "POST",
       credentials: "include",
       body: JSON.stringify({
@@ -32,11 +51,12 @@ class Login extends React.Component {
         "Content-Type": "application/json",
       },
     });
-    const data = await res.json();
+    if (res.data) {
+      setCurrUser(res.data);
+    }
   };
   handleChange = (e) => {
     const { name, value } = e.target;
-    console.log({ name, value });
     this.setState({ [name]: value });
   };
   render() {
@@ -87,4 +107,8 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+  setCurrUser: (user) => dispatch(setCurrUser(user)),
+});
+
+export default connect(null, mapDispatchToProps)(Login);
