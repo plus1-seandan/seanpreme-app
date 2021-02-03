@@ -6,7 +6,7 @@ const CollectionItem = ({ id, imageUrl, name, price }) => {
   return (
     <div className="collection__item">
       <div className="collection__item__image">
-        <img src={imageUrl} />
+        <img src={imageUrl} alt={name}/>
       </div>
       <div className="collection__item__footer">
         <span className="name">{name}</span>

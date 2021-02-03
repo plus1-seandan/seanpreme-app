@@ -1,0 +1,16 @@
+.login-register-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "LOGIN LOGIN REGISTER REGISTER "
+    "LOGIN LOGIN REGISTER REGISTER  ";
+
+  .login {
+    grid-area: LOGIN;
+  }
+  .register {
+    grid-area: REGISTER;
+  }
+}

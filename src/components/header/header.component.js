@@ -3,7 +3,7 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import VisibilityIcon from "@material-ui/icons/Visibility";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 import "./header.styles.scss";
 
@@ -34,9 +34,11 @@ const Header = () => {
           <div className="header__main__icon">
             <FavoriteBorderIcon fontSize="large" />
           </div>
-          <div className="header__main__icon">
-            <PersonOutlineIcon fontSize="large" />
-          </div>
+          <Link to="/sign-in">
+            <div className="header__main__icon">
+              <PersonOutlineIcon fontSize="large" />
+            </div>
+          </Link>
           <div className="header__main__icon">
             <LocalMallIcon fontSize="large" />
           </div>

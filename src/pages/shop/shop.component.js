@@ -17,7 +17,6 @@ class ShopPage extends React.Component {
     const { collections } = this.state;
     return (
       <div className="shop-page">
-        <Header />
         <div className="shop-page-body">
           <div className="collection-filter">COLLECTION FILTER</div>
           <div className="collection-main">

@@ -1,0 +1,23 @@
+// .register {
+//   width: 30vw;
+// }
+
+.login {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  width: 80%;
+  padding-left: 1rem;
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  span {
+    margin-top: 5px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+}
