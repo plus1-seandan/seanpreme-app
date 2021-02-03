@@ -1,15 +1,15 @@
 import MenuIcon from "@material-ui/icons/Menu";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import LocalMallIcon from "@material-ui/icons/LocalMall";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import "./header.styles.scss";
+import CartIcon from "../cart-icon/cart-icon.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
-const Header = ({ currUser }) => {
-  console.log({ currUser });
+const Header = ({ currUser, hidden }) => {
   return (
     <div className="header">
       <div className="header__tab">
@@ -48,19 +48,20 @@ const Header = ({ currUser }) => {
             )}
           </Link>
           <div className="header__main__icon">
-            <LocalMallIcon fontSize="large" />
+            <CartIcon />
           </div>
         </div>
+        {!hidden && <CartDropdown />}
       </div>
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
-  console.log({ state });
+const mapStateToProps = ({ user: { currUser }, cart: { hidden } }) => {
   return {
-    currUser: state.user.currUser,
+    currUser,
+    hidden,
   };
 };
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(withRouter(Header));
