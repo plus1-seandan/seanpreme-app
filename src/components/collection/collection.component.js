@@ -7,26 +7,34 @@ import CollectionItem from "../collection-item/collection-item.component";
 import "./collection.styles.scss";
 import { useState } from "react";
 import { Select } from "@chakra-ui/react";
+import LoadingSpinner from "../loading-spinner/loading-spinner.component";
 
-const Collection = () => {
-  const { collectionId } = useParams();
-  const [collection, setCollection] = useState();
+const Collection = ({ isLoading, collection }) => {
+  // const { collectionId } = useParams();
+  // const [collection, setCollection] = useState();
+  // const [isLoading, setLoading] = useState(true);
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:5000/collections?id=${collectionId}`)
-      .then(function (response) {
-        // handle success
-        setCollection(response.data[0]);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, [collectionId]);
+  // useEffect(() => {
+  //   setTimeout(
+  //     () =>
+  //       axios
+  //         .get(`http://localhost:5000/collections?id=${collectionId}`)
+  //         .then(function (response) {
+  //           // handle success
+  //           setCollection(response.data[0]);
+  //           setLoading(false);
+  //         })
+  //         .catch(function (error) {
+  //           console.log(error);
+  //           setLoading(false);
+  //         }),
+  //     3000
+  //   );
+  // }, [collectionId]);
 
-  if (!collection) {
-    return <div>loading...</div>;
-  }
+  // if (!collection) {
+  //   return <div>Loading</div>;
+  // }
   return (
     <div className="collection">
       <h1 className="collection__title">
@@ -54,4 +62,4 @@ const Collection = () => {
   );
 };
 
-export default Collection;
+export default LoadingSpinner(Collection);
