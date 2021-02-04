@@ -1,0 +1,29 @@
+.shipping-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+  width: 35vw;
+  margin-top: -1rem;
+
+  .email-title,
+  .shipping-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  .name-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -2rem;
+  }
+  .city-addresss-container {
+    margin-top: -4rem;
+  }
+  .city-country-zip-container {
+    display: flex;
+    margin-top: -3rem;
+    justify-content: space-between;
+  }
+  .phone-container {
+    margin-top: -2rem;
+  }
+}

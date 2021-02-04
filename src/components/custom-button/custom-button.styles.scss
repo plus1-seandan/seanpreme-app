@@ -32,6 +32,9 @@
       border: none;
     }
   }
+  &.disabled {
+    opacity: 50%;
+  }
 
   &.inverted {
     background-color: white;

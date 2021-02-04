@@ -58,7 +58,7 @@ class Register extends React.Component {
             name="firstName"
             type="text"
             value={this.state.firstName}
-            require
+            require={true}
             label="first name"
             handleChange={this.handleChange}
           />
@@ -66,7 +66,7 @@ class Register extends React.Component {
             name="lastName"
             type="text"
             value={this.state.lastName}
-            require
+            require={true}
             label="last name"
             handleChange={this.handleChange}
           />
@@ -74,7 +74,7 @@ class Register extends React.Component {
             name="email"
             type="email"
             value={this.state.email}
-            require
+            require={true}
             label="email"
             handleChange={this.handleChange}
           />
@@ -82,7 +82,7 @@ class Register extends React.Component {
             name="password"
             type="password"
             value={this.state.password}
-            require
+            require={true}
             label="password"
             handleChange={this.handleChange}
           />
@@ -90,7 +90,7 @@ class Register extends React.Component {
             name="confirmPassword"
             type="password"
             value={this.state.confirmPassword}
-            require
+            require={true}
             label="confirm password"
             handleChange={this.handleChange}
           />
