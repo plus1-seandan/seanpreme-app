@@ -1,84 +1,21 @@
-.checkout-form {
-  width: 40vw;
-  margin-left: 3rem;
-  margin-top: 10rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.FormGroup {
-  margin: 0 15px 20px;
-  padding: 0;
-  border-style: none;
-  background-color: #7795f8;
-  //   will-change: opacity, transform;
-  box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08);
-  border-radius: 4px;
-  width: 100%;
+.checkout-form-body {
   display: flex;
   flex-direction: column;
 
-  .submit {
-    background-color: white;
-    margin: 10px;
-    height: 50px;
-    font-weight: 700;
-    border-radius: 5px;
-    transition: all 0.2s;
-  }
-  .submit:hover {
-    background-color: orange;
-    color: white;
-  }
-}
-
-.FormRow {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-left: 15px;
-  border-top: 1px solid #819efc;
-
-  .input-field {
-    display: flex;
+  .checkout-total {
     width: 100%;
-    justify-content: space-between;
-    color: #fff;
-    margin: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    h1 {
+      font-size: large;
+      font-weight: 700;
+    }
+    span {
+      margin: 0 10px;
+      font-size: large;
+      font-weight: 700;
+    }
   }
-}
-
-input {
-  color: #fff;
-  font-weight: 500;
-  font-size: 16px;
-  outline: none;
-  background-color: #7795f8;
-  &::-webkit-input-placeholder {
-    color: orange;
-  }
-}
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px#7795f8 inset !important;
-}
-input:-webkit-autofill {
-  -webkit-text-fill-color: white !important;
-}
-
-label {
-  color: #f8f8ff;
-  margin-left: 1rem;
-}
-
-.StripeElement--webkit-autofill {
-  background: #7795f8 !important;
-}
-
-.StripeElement {
-  width: 100%;
-  padding: 11px 15px 11px 0;
 }

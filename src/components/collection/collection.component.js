@@ -10,35 +10,11 @@ import { Select } from "@chakra-ui/react";
 import LoadingSpinner from "../loading-spinner/loading-spinner.component";
 
 const Collection = ({ isLoading, collection }) => {
-  // const { collectionId } = useParams();
-  // const [collection, setCollection] = useState();
-  // const [isLoading, setLoading] = useState(true);
-
-  // useEffect(() => {
-  //   setTimeout(
-  //     () =>
-  //       axios
-  //         .get(`http://localhost:5000/collections?id=${collectionId}`)
-  //         .then(function (response) {
-  //           // handle success
-  //           setCollection(response.data[0]);
-  //           setLoading(false);
-  //         })
-  //         .catch(function (error) {
-  //           console.log(error);
-  //           setLoading(false);
-  //         }),
-  //     3000
-  //   );
-  // }, [collectionId]);
-
-  // if (!collection) {
-  //   return <div>Loading</div>;
-  // }
   return (
     <div className="collection">
       <h1 className="collection__title">
-        {collection.collectionName.toUpperCase()}
+        Some dynamic title
+        {/* {collection.collectionName.toUpperCase()} */}
       </h1>
       <div className="collection__header">
         <span>372 results</span>
@@ -52,14 +28,15 @@ const Collection = ({ isLoading, collection }) => {
         </div>
       </div>
       <div className="collection__items">
-        {collection.items
-          .filter((item, idx) => idx < 12)
+        {collection
+          // .filter((item, idx) => idx < 12)
           .map((item) => (
             <CollectionItem key={item.id} item={item} />
           ))}
+        {isLoading ? <div>loading...</div> : null}
       </div>
     </div>
   );
 };
 
-export default LoadingSpinner(Collection);
+export default Collection;
