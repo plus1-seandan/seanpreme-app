@@ -1,14 +1,8 @@
-import React, { useState } from "react";
-import { loadStripe } from "@stripe/stripe-js";
-import {
-  Elements,
-  CardElement,
-  useStripe,
-  useElements,
-} from "@stripe/react-stripe-js";
+import React from "react";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 
-import "./stripe-checkout.styles.scss";
+import "./checkout-form.styles.scss";
 import { Button } from "@chakra-ui/react";
 
 const CARD_OPTIONS = {
@@ -146,25 +140,4 @@ const CheckoutForm = ({ status, setStatus }) => {
   );
 };
 
-const stripePromise = loadStripe(`${process.env.REACT_APP_STRIPE_PUB_KEY}`);
-
-const StripeCheckout = () => {
-  const [status, setStatus] = useState("ready");
-
-  if (status === "success") {
-    return <div>Payment Successful!</div>;
-  }
-
-  return (
-    <Elements stripe={stripePromise}>
-      <CheckoutForm
-        status={status}
-        setStatus={(status) => {
-          setStatus(status);
-        }}
-      />
-    </Elements>
-  );
-};
-
-export default StripeCheckout;
+export default CheckoutForm;
