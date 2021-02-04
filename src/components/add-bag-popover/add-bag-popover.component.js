@@ -16,6 +16,9 @@ const AddBagPopover = ({
   const [size, setSize] = useState();
 
   const handleAddToBag = () => {
+    if (!size) {
+      return;
+    }
     addItem(item);
     setShowPopover(!show);
     toggleCartHidden();
@@ -28,28 +31,28 @@ const AddBagPopover = ({
           <button
             class="add-bag-button"
             value="s"
-            onChange={(e) => setSize(e.target.value)}
+            onClick={(e) => setSize(e.target.value)}
           >
             S
           </button>
           <button
             class="add-bag-button"
             value="m"
-            onChange={(e) => setSize(e.target.value)}
+            onClick={(e) => setSize(e.target.value)}
           >
             M
           </button>
           <button
             class="add-bag-button"
             value="l"
-            onChange={(e) => setSize(e.target.value)}
+            onClick={(e) => setSize(e.target.value)}
           >
             L
           </button>
           <button
             class="add-bag-button"
             value="xl"
-            onChange={(e) => setSize(e.target.value)}
+            onClick={(e) => setSize(e.target.value)}
           >
             XL
           </button>

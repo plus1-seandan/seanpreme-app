@@ -6,24 +6,32 @@ import axios from "axios";
 import CollectionItem from "../collection-item/collection-item.component";
 import "./collection.styles.scss";
 import { useState } from "react";
+import { Select } from "@chakra-ui/react";
 
 const Collection = () => {
   const { collectionId } = useParams();
-  const [items, setItems] = useState();
+  const [collection, setCollection] = useState();
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/collections/:${collectionId}`)
-      .then((res) => res.json())
-      .then((data) => setItems(data));
+      .get(`http://localhost:5000/collections?id=${collectionId}`)
+      .then(function (response) {
+        // handle success
+        setCollection(response.data[0]);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }, [collectionId]);
 
-  if (items) {
-    console.log({ items });
+  if (!collection) {
+    return <div>loading...</div>;
   }
   return (
     <div className="collection">
-      {/* <h1 className="collection__title">{title.toUpperCase()}</h1>
+      <h1 className="collection__title">
+        {collection.collectionName.toUpperCase()}
+      </h1>
       <div className="collection__header">
         <span>372 results</span>
         <div className="collection__header__filter">
@@ -36,12 +44,12 @@ const Collection = () => {
         </div>
       </div>
       <div className="collection__items">
-        {items
+        {collection.items
           .filter((item, idx) => idx < 12)
           .map((item) => (
             <CollectionItem key={item.id} item={item} />
           ))}
-      </div> */}
+      </div>
     </div>
   );
 };
