@@ -1,12 +1,29 @@
-import { Select } from "@chakra-ui/react";
 import React from "react";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+
 import CollectionItem from "../collection-item/collection-item.component";
 import "./collection.styles.scss";
+import { useState } from "react";
 
-const Collection = ({ title, items }) => {
+const Collection = () => {
+  const { collectionId } = useParams();
+  const [items, setItems] = useState();
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/collections/:${collectionId}`)
+      .then((res) => res.json())
+      .then((data) => setItems(data));
+  }, [collectionId]);
+
+  if (items) {
+    console.log({ items });
+  }
   return (
     <div className="collection">
-      <h1 className="collection__title">{title.toUpperCase()}</h1>
+      {/* <h1 className="collection__title">{title.toUpperCase()}</h1>
       <div className="collection__header">
         <span>372 results</span>
         <div className="collection__header__filter">
@@ -24,7 +41,7 @@ const Collection = ({ title, items }) => {
           .map((item) => (
             <CollectionItem key={item.id} item={item} />
           ))}
-      </div>
+      </div> */}
     </div>
   );
 };

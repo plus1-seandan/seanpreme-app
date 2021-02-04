@@ -16,11 +16,10 @@ const Header = ({ currUser, hidden }) => {
   return (
     <div className="header">
       <div className="header__tab">
-        <a href="/#">WOMEN</a>
-        <a href="/#">CURVE</a>
-        <a href="/#">MEN</a>
-        <a href="/#">KIDS</a>
-        <a href="/#">BEAUTY</a>
+        <Link to="/collections/1">HATS</Link>
+        <Link to="/collections/2">SNEAKERS</Link>
+        <Link to="/collections/3">JACKETS</Link>
+        <Link to="/collections/4">TOPS</Link>
       </div>
       <div className="header__main">
         <div className="header__main__left">
