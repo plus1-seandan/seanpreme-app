@@ -1,0 +1,20 @@
+.product-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "IMAGE IMAGE INFO INFO"
+    "IMAGE IMAGE INFO INFO"
+    "IMAGE IMAGE INFO INFO";
+
+  //temporary
+  height: 100vh;
+
+  .product-image {
+    grid-area: IMAGE;
+  }
+  .product-info {
+    grid-area: INFO;
+  }
+}

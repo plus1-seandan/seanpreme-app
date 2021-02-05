@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+
 import { addItem } from "../../redux/cart/cart.actions";
 import { useClickOutside } from "../../utils/clickOutside";
 import AddBagPopover from "../add-bag-popover/add-bag-popover.component";
@@ -18,7 +20,9 @@ const CollectionItem = ({ item, addItem }) => {
   return (
     <div className="collection__item" ref={domNode}>
       <div className="collection__item__image">
-        <img src={imageUrl} alt={item.itemName} />
+        <Link to={`/products/${item.id}`}>
+          <img src={imageUrl} alt={item.itemName} />
+        </Link>
       </div>
       <div className="collection__item__footer">
         <span className="name">{itemName}</span>

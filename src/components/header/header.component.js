@@ -5,6 +5,7 @@ import VisibilityIcon from "@material-ui/icons/Visibility";
 import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+import SearchIcon from "@material-ui/icons/Search";
 
 import "./header.styles.scss";
 import CartIcon from "../cart-icon/cart-icon.component";
@@ -34,7 +35,13 @@ const Header = ({ currUser, hidden }) => {
           </Link>
         </div>
         <div className="header__main__center">
-          <div className="header__main__search">Search</div>
+          {/* <div className="header__main__search">Search</div> */}
+          <form action="#" class="search">
+            <input type="text" class="search__input" placeholder="Search..." />
+            <button class="search__button">
+              <SearchIcon class="search__icon" />
+            </button>
+          </form>
         </div>
         <div className="header__main__right">
           <div className="header__main__icon">
