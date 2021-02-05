@@ -11,6 +11,7 @@ import CheckoutPage from "./pages/checkout/checkout.component";
 import { isAuthenticated } from "./utils/auth";
 import { Spinner } from "@chakra-ui/react";
 import ProfilePage from "./pages/profile/profile.component";
+import Footer from "./components/footer/footer.component";
 
 const PrivateRoute = ({ component: Component, user, ...rest }) => {
   const [isAuth, setIsAuth] = useState(false);
@@ -60,6 +61,7 @@ class Routes extends React.Component {
           <PrivateRoute path="/profile" exact component={ProfilePage} />
           <Route exact path="/sign-in" component={LoginRegisterPage} />
         </Switch>
+        <Footer />
       </div>
     );
   }

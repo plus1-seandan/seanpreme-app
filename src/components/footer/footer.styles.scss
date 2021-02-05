@@ -1,0 +1,57 @@
+.footer {
+  width: 100%;
+  background-color: black;
+  min-height: 20vh;
+  color: white;
+
+  .follow {
+    background-color: #404040;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    * {
+      margin: 0 10px;
+    }
+  }
+  .footer-body {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  h1 {
+    font-size: large;
+    font-weight: bold;
+  }
+  .footer-column {
+    display: flex;
+    flex-direction: column;
+
+    * {
+      padding: 10px;
+    }
+  }
+  .sign-up {
+    max-width: 20rem;
+    p {
+      margin: 2rem 0;
+    }
+  }
+
+  .legal {
+    background-color: #404040;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    p {
+      margin: 0 10px;
+    }
+    span {
+      margin: 0 1rem;
+      position: absolute;
+      right: 0px;
+    }
+  }
+}
