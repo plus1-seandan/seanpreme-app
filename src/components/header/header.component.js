@@ -11,6 +11,7 @@ import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
+import Logo from "../../assets/logo.png";
 
 const Header = ({ currUser, hidden }) => {
   return (
@@ -27,7 +28,9 @@ const Header = ({ currUser, hidden }) => {
             <MenuIcon fontSize="large" />
           </div>
           <Link to="/">
-            <div className="header__main__logo">Logo </div>
+            <div className="header__main__logo">
+              <h1 className="logo">SeanPreme</h1>
+            </div>
           </Link>
         </div>
         <div className="header__main__center">

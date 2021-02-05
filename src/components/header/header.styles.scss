@@ -36,8 +36,21 @@
       height: 100%;
     }
     &__logo {
-      font-weight: 700;
-      font-size: 3rem;
+      font-size: 1.9rem;
+      width: 110%;
+      border: 1px solid white;
+
+      .logo {
+        color: #fff;
+        background: red;
+        padding: 7px 7px;
+        text-decoration: none;
+        margin: auto;
+        text-align: center;
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        font-style: italic;
+      }
     }
     &__menu:hover {
       background-color: grey;
