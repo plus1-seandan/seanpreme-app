@@ -7,19 +7,20 @@ import { connect } from "react-redux";
 import "./checkout-form.styles.scss";
 import { Button } from "@chakra-ui/react";
 import { clearCart } from "../../redux/cart/cart.actions";
+import FormInput from "../form-input/form-input.component";
 
 const CARD_OPTIONS = {
   iconStyle: "solid",
   style: {
     base: {
-      iconColor: "#c4f0ff",
-      color: "#fff",
+      iconColor: "#000",
+      color: "#000",
       fontWeight: 500,
       fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
       fontSize: "16px",
       fontSmoothing: "antialiased",
       ":-webkit-autofill": { color: "#fce883" },
-      "::placeholder": { color: "#87bbfd" },
+      "::placeholder": { color: "#808080" },
     },
     invalid: {
       iconColor: "#ffc7ee",
@@ -79,125 +80,95 @@ const CheckoutForm = ({ status, setStatus, total, clearCart }) => {
 
   return (
     <form onSubmit={handleSubmit} className="checkout-form">
-      <fieldset className="FormGroup">
-        <div className="FormRow">
-          <CardElement options={CARD_OPTIONS} />
+      <CardElement options={CARD_OPTIONS} />
+      <div className="form-rows">
+        <FormInput
+          name="email"
+          type="email"
+          value={customerInfo.email}
+          require={true}
+          label="email"
+          handleChange={(e) =>
+            setCustomerInfo({ ...customerInfo, email: e.target.value })
+          }
+        />
+        <div className="name-row">
+          <FormInput
+            name="firstName"
+            type="text"
+            value={customerInfo.firstName}
+            require={true}
+            label="John"
+            handleChange={(e) =>
+              setCustomerInfo({ ...customerInfo, firstName: e.target.value })
+            }
+          />
+          <FormInput
+            name="lastName"
+            type="text"
+            value={customerInfo.lastName}
+            require={true}
+            label="Doe"
+            handleChange={(e) =>
+              setCustomerInfo({ ...customerInfo, lastName: e.target.value })
+            }
+          />
         </div>
-        <div className="FormRow">
-          <div className="input-field">
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="email"
-              required
-              onChange={(e) =>
-                setCustomerInfo({ ...customerInfo, email: e.target.value })
-              }
-            />
-            <label for="email">email</label>
-          </div>
+
+        <FormInput
+          name="address1"
+          type="text"
+          value={customerInfo.address1}
+          require={true}
+          label="Address 1"
+          handleChange={(e) =>
+            setCustomerInfo({ ...customerInfo, address1: e.target.value })
+          }
+        />
+        <FormInput
+          name="address2"
+          type="text"
+          value={customerInfo.address2}
+          require={true}
+          label="Address 2 (optional)"
+          handleChange={(e) =>
+            setCustomerInfo({ ...customerInfo, address2: e.target.value })
+          }
+        />
+        <div className="city-state-zip-row">
+          <FormInput
+            name="city"
+            type="text"
+            value={customerInfo.city}
+            require={true}
+            label="city"
+            handleChange={(e) =>
+              setCustomerInfo({ ...customerInfo, city: e.target.value })
+            }
+          />
+          <FormInput
+            name="state"
+            type="text"
+            value={customerInfo.state}
+            require={true}
+            label="state"
+            handleChange={(e) =>
+              setCustomerInfo({ ...customerInfo, state: e.target.value })
+            }
+          />
+          <FormInput
+            name="zipcode"
+            type="text"
+            value={customerInfo.zipcode}
+            require={true}
+            label="Zipcode"
+            handleChange={(e) =>
+              setCustomerInfo({ ...customerInfo, zipcode: e.target.value })
+            }
+          />
         </div>
-        <div className="FormRow">
-          <div className="input-field">
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              placeholder="First Name"
-              onChange={(e) =>
-                setCustomerInfo({ ...customerInfo, firstName: e.target.value })
-              }
-            />
-            <label for="firstName">First Name</label>
-          </div>
-        </div>
-        <div className="FormRow">
-          <div className="input-field">
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              placeholder="Last Name"
-              onChange={(e) =>
-                setCustomerInfo({ ...customerInfo, lastName: e.target.value })
-              }
-            />
-            <label for="lastName">Last Name</label>
-          </div>
-        </div>
-        <div className="FormRow">
-          <div className="input-field">
-            <input
-              type="text"
-              id="address1"
-              name="address1"
-              placeholder="Address 1"
-              required
-              onChange={(e) =>
-                setCustomerInfo({ ...customerInfo, address1: e.target.value })
-              }
-            />
-            <label for="address1">Address 1</label>
-          </div>
-        </div>
-        <div className="FormRow">
-          <div className="input-field">
-            <input
-              type="text"
-              id="address2"
-              name="address2"
-              placeholder="Address 2 (Optional)"
-              onChange={(e) =>
-                setCustomerInfo({ ...customerInfo, address2: e.target.value })
-              }
-            />
-            <label for="address2">Address 2</label>
-          </div>
-        </div>
-        <div className="FormRow">
-          <div className="input-field">
-            <input
-              type="text"
-              id="city"
-              name="city"
-              placeholder="City"
-              required
-              onChange={(e) =>
-                setCustomerInfo({ ...customerInfo, city: e.target.value })
-              }
-            />
-            <label for="city">City</label>
-          </div>
-        </div>
-        <div className="FormRow">
-          <div className="input-field">
-            <input
-              type="text"
-              id="state"
-              name="state"
-              placeholder="State"
-              required
-              onChange={(e) =>
-                setCustomerInfo({ ...customerInfo, state: e.target.value })
-              }
-            />
-            <label for="state">State</label>
-          </div>
-          <div className="input-field">
-            <input
-              type="text"
-              id="zip"
-              name="zip"
-              placeholder="Zipcode"
-              required
-              onChange={(e) =>
-                setCustomerInfo({ ...customerInfo, zipcode: e.target.value })
-              }
-            />
-            <label for="zip">Zipcode</label>
-          </div>
-        </div>
+      </div>
+      <div className="checkout-button">
         <Button
           isLoading={status === "loading"}
           className="submit"
@@ -206,7 +177,7 @@ const CheckoutForm = ({ status, setStatus, total, clearCart }) => {
         >
           Pay
         </Button>
-      </fieldset>
+      </div>
     </form>
   );
 };

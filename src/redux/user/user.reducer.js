@@ -11,6 +11,9 @@ const userReducer = (state = INIT_STATE, action) => {
         ...state,
         currUser: action.payload,
       };
+    case UserActionTypes.LOGOUT_CURR_USER:
+      state = INIT_STATE;
+      return state;
     default:
       return state;
   }

@@ -53,7 +53,6 @@ class Register extends React.Component {
     return (
       <div className="register">
         <h2>CREATE ACCOUNT</h2>
-        <span>Back to Customer Login</span>
         <form onSubmit={this.handleSubmit}>
           <FormInput
             name="firstName"

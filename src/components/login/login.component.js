@@ -68,7 +68,6 @@ class Login extends React.Component {
     return (
       <div className="login">
         <h2>CUSTOMER LOGIN</h2>
-        <span>Back to Customer Login</span>
 
         <form onSubmit={this.handleSubmit}>
           <FormInput

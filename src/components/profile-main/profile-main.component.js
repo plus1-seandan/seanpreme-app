@@ -10,16 +10,29 @@ import {
   Td,
   TableCaption,
 } from "@chakra-ui/react";
+import { withRouter } from "react-router-dom";
 
 import CustomButton from "../custom-button/custom-button.component";
 import "./profile-main.styles.scss";
+import { logoutUser } from "../../redux/user/user.actions";
+import { clearCart } from "../../redux/cart/cart.actions";
 
-const ProfileMain = ({ user }) => {
+const ProfileMain = ({ user, logoutUser, history, clearCart }) => {
   const handleLogout = async () => {
-    //backend call to destroy session
-    await axios.post("http://localhost:5000/user/logout");
-    //action to remove user from redux store
-    //redirect to home
+    try {
+      //backend call to destroy session
+      await axios.post("http://localhost:5000/users/logout", null, {
+        withCredentials: "include",
+      });
+      //action to remove user from redux store
+      // logoutUser();
+      //redirect to home
+      history.push("/");
+      logoutUser();
+      clearCart();
+    } catch (e) {
+      console.log(e);
+    }
   };
   return (
     <div className="profile-main">
@@ -72,4 +85,9 @@ const ProfileMain = ({ user }) => {
   );
 };
 
-export default ProfileMain;
+const mapDispatchToProps = (dispatch) => ({
+  logoutUser: () => dispatch(logoutUser()),
+  clearCart: () => dispatch(clearCart()),
+});
+
+export default withRouter(connect(null, mapDispatchToProps)(ProfileMain));
