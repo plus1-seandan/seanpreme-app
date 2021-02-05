@@ -1,5 +1,7 @@
-import "./checkout-header.styles.scss";
+import { Link } from "react-router-dom";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+
+import "./checkout-header.styles.scss";
 
 const CheckoutHeader = () => {
   return (
@@ -7,7 +9,9 @@ const CheckoutHeader = () => {
       <span className="title">SHOPPING BAG</span>
       <div className="continue-shopping">
         <ArrowBackIosIcon fontSize="small" />
-        <span>Continue shopping</span>
+        <Link to="/">
+          <span>Continue shopping</span>
+        </Link>
       </div>
     </div>
   );
