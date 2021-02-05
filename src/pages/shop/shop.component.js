@@ -6,6 +6,7 @@ import { Spinner } from "@chakra-ui/react";
 import "./shop.styles.scss";
 import Collection from "../../components/collection/collection.component";
 import CustomButton from "../../components/custom-button/custom-button.component";
+import CollectionFilter from "../../components/collection-filter/collection-filter.component";
 
 const INIT_STATE = {
   collection: null,
@@ -54,7 +55,9 @@ const ShopPage = () => {
   return (
     <div className="shop-page">
       <div className="shop-page-body">
-        <div className="collection-filter">COLLECTION FILTER</div>
+        <div className="collection-filter">
+          <CollectionFilter />
+        </div>
         <div className="collection-main">
           <Collection isLoading={isLoading} collection={collection} />
           {!isLoading && HasMore && (

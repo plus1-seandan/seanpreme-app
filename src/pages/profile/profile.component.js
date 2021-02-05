@@ -9,7 +9,7 @@ const ProfilePage = (props) => {
 
   return (
     <div className="profile-page">
-      <div className="profile-sidebar">test</div>
+      <div className="profile-sidebar"></div>
       <div className="profile-main">
         <ProfileMain user={user} />
       </div>
