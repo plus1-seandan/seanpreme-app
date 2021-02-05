@@ -40,6 +40,7 @@ class Register extends React.Component {
         password: "",
         confirmPassword: "",
       });
+      alert("successfully created user. Please login.");
     } catch (e) {
       console.log(e);
     }

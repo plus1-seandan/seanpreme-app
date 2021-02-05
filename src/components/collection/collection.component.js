@@ -1,20 +1,22 @@
 import React from "react";
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
 
 import CollectionItem from "../collection-item/collection-item.component";
 import "./collection.styles.scss";
-import { useState } from "react";
-import { Select } from "@chakra-ui/react";
-import LoadingSpinner from "../loading-spinner/loading-spinner.component";
+import { Select, Spinner } from "@chakra-ui/react";
 
 const Collection = ({ isLoading, collection }) => {
+  if (!collection || !collection.collection) {
+    return (
+      <div className="load-items-spinner">
+        <span>loading...</span>
+        <Spinner size="xl" />
+      </div>
+    );
+  }
   return (
     <div className="collection">
       <h1 className="collection__title">
-        Some dynamic title
-        {/* {collection.collectionName.toUpperCase()} */}
+        {collection.collection.collectionName.toUpperCase()}
       </h1>
       <div className="collection__header">
         <span>372 results</span>
@@ -28,13 +30,15 @@ const Collection = ({ isLoading, collection }) => {
         </div>
       </div>
       <div className="collection__items">
-        {collection
-          // .filter((item, idx) => idx < 12)
-          .map((item) => (
-            <CollectionItem key={item.id} item={item} />
-          ))}
-        {isLoading ? <div>loading...</div> : null}
+        {collection.items.map((item) => (
+          <CollectionItem key={item.id} item={item} />
+        ))}
       </div>
+      {isLoading && (
+        <div className="load-more-spinner">
+          <Spinner size="xl" />
+        </div>
+      )}
     </div>
   );
 };

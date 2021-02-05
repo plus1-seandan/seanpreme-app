@@ -10,12 +10,17 @@
     "area-1- AREA2 AREA2 AREA2 AREA2"
     "area-1- AREA2 AREA2 AREA2 AREA2"
     "area-1- AREA2 AREA2 AREA2 AREA2";
+
+  .load-more-button {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+  }
 }
 .collection-filter {
   grid-area: area-1-;
-  border: solid;
 }
 .collection-main {
   grid-area: AREA2;
-  border: solid;
+  margin-right: 2rem;
 }

@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Spinner } from "@chakra-ui/react";
 
 import "./shop.styles.scss";
 import Collection from "../../components/collection/collection.component";
+import CustomButton from "../../components/custom-button/custom-button.component";
+
+const INIT_STATE = {
+  collection: null,
+  items: [],
+};
 
 const ShopPage = () => {
   const { collectionId } = useParams();
-  const [collection, setCollection] = useState([]);
+  const [collection, setCollection] = useState(INIT_STATE);
   const [isLoading, setLoading] = useState(true);
   //setting tha initial page
   const [page, setPage] = useState(0);
@@ -15,35 +22,33 @@ const ShopPage = () => {
   const [HasMore, setHasMore] = useState(true);
 
   useEffect(() => {
-    setCollection([]);
+    setCollection(INIT_STATE);
     setPage(0);
     setHasMore(true);
   }, [collectionId]);
 
   useEffect(() => {
-    if (collection.length === 0) {
+    if (collection.items.length === 0) {
       loadMoreItems();
     }
   }, [collection]);
 
   async function loadMoreItems() {
     setLoading(true);
-    const { data } = await axios({
-      method: "GET",
-      url: `http://localhost:5000/collections?id=${collectionId}`,
-      params: { _page: page, _limit: 12, _collectionId: collectionId },
-    });
-    // console.log(res.data);
-    // setCollection([...collection, ...data.response.items]);
-    setCollection([...collection, ...data.response.items]);
-
-    // setCollection((prevItems) => {
-    //   return [...new Set([...prevItems, ...res.data.map((b) => b.title)])];
-    // });
-    // console.log(res);
-    setPage((prevPageNumber) => prevPageNumber + 1);
-    setHasMore(data.response.items.length > 0);
-    setLoading(false);
+    setTimeout(async () => {
+      const { data } = await axios({
+        method: "GET",
+        url: `http://localhost:5000/collections?id=${collectionId}`,
+        params: { _page: page, _limit: 12, _collectionId: collectionId },
+      });
+      setCollection({
+        collection: data.collection,
+        items: [...collection.items, ...data.items.items],
+      });
+      setPage((prevPageNumber) => prevPageNumber + 1);
+      setHasMore(data.items.items.length > 0);
+      setLoading(false);
+    }, 1000);
   }
 
   return (
@@ -53,7 +58,9 @@ const ShopPage = () => {
         <div className="collection-main">
           <Collection isLoading={isLoading} collection={collection} />
           {!isLoading && HasMore && (
-            <button onClick={loadMoreItems}>Load more</button>
+            <div className="load-more-button">
+              <CustomButton onClick={loadMoreItems}>Load more</CustomButton>
+            </div>
           )}
         </div>
       </div>

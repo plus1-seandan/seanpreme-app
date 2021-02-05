@@ -1,5 +1,5 @@
 .cart-dropdown {
-  position: absolute;
+  position: fixed;
   width: 240px;
   height: 340px;
   display: flex;
@@ -10,6 +10,8 @@
   top: 110px;
   right: 20px;
   z-index: 5;
+  background-color: grey;
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.8);
 
   .empty-message {
     color: black;

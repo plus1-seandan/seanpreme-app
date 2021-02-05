@@ -1,0 +1,17 @@
+.profile-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "SIDE SIDE MAIN MAIN MAIN MAIN MAIN MAIN"
+    "SIDE SIDE MAIN MAIN MAIN MAIN MAIN MAIN";
+
+  .profile-sidebar {
+    grid-area: SIDE;
+    background-color: pink;
+  }
+  .profile-main {
+    grid-area: MAIN;
+  }
+}

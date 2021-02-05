@@ -29,3 +29,21 @@
     grid-gap: 1rem;
   }
 }
+
+.load-items-spinner {
+  margin: 2rem 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  font-weight: 700;
+  font-size: 3rem;
+}
+.load-more-spinner {
+  margin: 2rem 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

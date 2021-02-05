@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { GoogleLogin } from "react-google-login";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 import CustomButton from "../custom-button/custom-button.component";
 import FormInput from "../form-input/form-input.component";
@@ -30,7 +31,9 @@ class Login extends React.Component {
         { withCredentials: "include" }
       );
       if (res.data) {
+        console.log({ user: res.data });
         setCurrUser(res.data);
+        this.props.history.push("/");
       }
       this.setState({
         email: "",
@@ -40,21 +43,23 @@ class Login extends React.Component {
       console.log(e);
     }
   };
+
   responseGoogle = async (response) => {
-    const res = await fetch("http://localhost:5000/auth/google", {
-      method: "POST",
-      credentials: "include",
-      body: JSON.stringify({
-        token: response.tokenId,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const { setCurrUser } = this.props;
+
+    const res = await axios.post(
+      "http://localhost:5000/auth/google",
+      { token: response.tokenId },
+      { withCredentials: "include" }
+    );
+
     if (res.data) {
+      console.log({ user: res.data });
       setCurrUser(res.data);
+      this.props.history.push("/");
     }
   };
+
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
@@ -84,7 +89,7 @@ class Login extends React.Component {
           />
           <div className="login__buttons">
             <div>
-              <CustomButton onClick={this.handleTest}>Login</CustomButton>
+              <CustomButton type="submit">Login</CustomButton>
             </div>
             <div>
               <GoogleLogin
@@ -115,4 +120,4 @@ const mapDispatchToProps = (dispatch) => ({
   setCurrUser: (user) => dispatch(setCurrUser(user)),
 });
 
-export default connect(null, mapDispatchToProps)(Login);
+export default withRouter(connect(null, mapDispatchToProps)(Login));

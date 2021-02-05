@@ -40,7 +40,7 @@ const Header = ({ currUser, hidden }) => {
           <div className="header__main__icon">
             <FavoriteBorderIcon fontSize="large" />
           </div>
-          <Link to="/sign-in">
+          <Link to="/profile">
             {currUser ? (
               <div className="header__main__icon">{currUser.firstName}</div>
             ) : (

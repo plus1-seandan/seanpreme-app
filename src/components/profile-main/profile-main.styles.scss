@@ -1,0 +1,59 @@
+.profile-main {
+  padding: 1rem;
+
+  .greeting {
+    font: 600 35px/35px proxima-nova, Arial, sans-serif;
+    text-transform: uppercase;
+    margin: 1rem 0;
+  }
+  .description {
+    color: #404040;
+    margin: 1rem 0;
+    font-weight: 400;
+  }
+  .account-address-info {
+    display: flex;
+    justify-content: flex-start;
+
+    .account-information {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      h2 {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0.5rem 0;
+      }
+      h3 {
+        font-size: 15px;
+        font-weight: 700;
+        margin: 0.5rem 0;
+      }
+    }
+    .address-book {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+
+      h2 {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0.5rem 0;
+      }
+      h3 {
+        font-size: 15px;
+        font-weight: 700;
+        margin: 0.5rem 0;
+      }
+    }
+  }
+
+  .my-orders {
+    margin: 3rem 0;
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0.5rem 0;
+    }
+  }
+}
