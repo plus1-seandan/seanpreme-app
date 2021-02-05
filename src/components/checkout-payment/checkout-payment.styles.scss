@@ -19,3 +19,61 @@
     }
   }
 }
+
+.success-message {
+  margin: 5rem;
+  height: 20rem;
+
+  .success-message-top {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1 {
+      font-weight: 700;
+      font-size: 2rem;
+      margin: 1rem 0;
+    }
+    p {
+      overflow: hidden;
+    }
+    border-bottom: 1px solid black;
+  }
+
+  .success-message-bottom {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.error-message {
+  margin: 5rem;
+  height: 20rem;
+
+  .error-message-top {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1 {
+      font-weight: 700;
+      font-size: 2rem;
+      margin: 1rem 0;
+    }
+    p {
+      overflow: hidden;
+    }
+    border-bottom: 1px solid black;
+  }
+
+  .error-message-bottom {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}

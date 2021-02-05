@@ -65,9 +65,9 @@ const CheckoutForm = ({ status, setStatus, total, clearCart }) => {
         setStatus("success");
         clearCart();
         //clear cart and redirect to home page
-        setTimeout(() => {
-          history.push("/");
-        }, 2000);
+        // setTimeout(() => {
+        //   history.push("/");
+        // }, 2000);
       } catch (error) {
         console.log(error);
         setStatus("fail");
