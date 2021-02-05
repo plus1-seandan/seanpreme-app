@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { Spinner } from "@chakra-ui/react";
 
 import "./shop.styles.scss";
 import Collection from "../../components/collection/collection.component";
 import CustomButton from "../../components/custom-button/custom-button.component";
 import CollectionFilter from "../../components/collection-filter/collection-filter.component";
+import ScrollToTopButton from "../../components/scroll-to-top-button/scroll-to-top.component";
 
 const INIT_STATE = {
   collection: null,
@@ -65,6 +65,9 @@ const ShopPage = () => {
               <CustomButton onClick={loadMoreItems}>Load more</CustomButton>
             </div>
           )}
+          <div className="scroll-to-top-button">
+            <ScrollToTopButton />
+          </div>
         </div>
       </div>
     </div>

@@ -1,26 +1,32 @@
 .shop-page {
-}
+  .shop-page-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "area-1- AREA2 AREA2 AREA2 AREA2"
+      "area-1- AREA2 AREA2 AREA2 AREA2"
+      "area-1- AREA2 AREA2 AREA2 AREA2";
 
-.shop-page-body {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    "area-1- AREA2 AREA2 AREA2 AREA2"
-    "area-1- AREA2 AREA2 AREA2 AREA2"
-    "area-1- AREA2 AREA2 AREA2 AREA2";
-
-  .load-more-button {
-    margin: 2rem 0;
-    display: flex;
-    justify-content: center;
+    .load-more-button {
+      margin: 2rem 0;
+      display: flex;
+      justify-content: center;
+    }
   }
-}
-.collection-filter {
-  grid-area: area-1-;
-}
-.collection-main {
-  grid-area: AREA2;
-  margin-right: 2rem;
+  .collection-filter {
+    grid-area: area-1-;
+  }
+  .collection-main {
+    grid-area: AREA2;
+    margin-right: 2rem;
+  }
+
+  .scroll-to-top-button {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin: 1rem;
+  }
 }
