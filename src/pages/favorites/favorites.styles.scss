@@ -1,0 +1,20 @@
+.favorites-page {
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  flex-direction: column;
+  min-height: 40vh;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 2rem 0;
+  }
+
+  .please-login {
+    margin: 2rem;
+    p {
+      font-size: 1.2rem;
+    }
+  }
+}
