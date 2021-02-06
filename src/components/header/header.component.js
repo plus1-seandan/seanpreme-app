@@ -44,7 +44,9 @@ const Header = ({ currUser, hidden }) => {
         </div>
         <div className="header__main__right">
           <div className="header__main__icon">
-            <VisibilityIcon fontSize="large" />
+            <Link to="/recently-viewed">
+              <VisibilityIcon fontSize="large" />
+            </Link>
           </div>
           <div className="header__main__icon">
             <FavoriteBorderIcon fontSize="large" />
