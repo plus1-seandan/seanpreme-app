@@ -3,10 +3,10 @@ import { StarIcon } from "@chakra-ui/icons";
 import { connect } from "react-redux";
 
 import CustomButton from "../custom-button/custom-button.component";
-import "./product-info.styles.scss";
 import LoadingSpinner from "../loading-spinner/loading-spinner.component";
 import { useState } from "react";
 import { addItem, toggleCartHidden } from "../../redux/cart/cart.actions";
+import "./product-info.styles.scss";
 
 const Rating = ({ stars }) => (
   <Box d="flex" mt="2" alignItems="center">

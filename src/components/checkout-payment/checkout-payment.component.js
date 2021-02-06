@@ -6,9 +6,9 @@ import { createStructuredSelector } from "reselect";
 import { useHistory } from "react-router-dom";
 
 import { selectCartTotal } from "../../redux/cart/cart.selectors";
-import "./checkout-payment.styles.scss";
 import CheckoutForm from "../checkout-form/checkout-form.component";
 import CustomButton from "../custom-button/custom-button.component";
+import "./checkout-payment.styles.scss";
 
 const stripePromise = loadStripe(`${process.env.REACT_APP_STRIPE_PUB_KEY}`);
 

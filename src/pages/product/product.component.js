@@ -1,10 +1,11 @@
-import ProductImage from "../../components/product-image/product-image.component";
-import "./product.styles.scss";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import LoadingSpinner from "../../components/loading-spinner/loading-spinner.component";
+
+import ProductImage from "../../components/product-image/product-image.component";
 import ProductInfo from "../../components/product-info/product-info.component";
+import { scrollToTop } from "../../utils/scrollToTop";
+import "./product.styles.scss";
 
 const ProductPage = () => {
   const { productId } = useParams();
@@ -20,6 +21,7 @@ const ProductPage = () => {
       console.log({ data });
       setProduct(data);
       setIsLoading(false);
+      scrollToTop();
     };
     asyncFunc();
   }, [productId]);

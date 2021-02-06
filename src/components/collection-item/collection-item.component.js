@@ -1,8 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
-import { connect } from "react-redux";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { addItem } from "../../redux/cart/cart.actions";
 import { useClickOutside } from "../../utils/clickOutside";
 import AddBagPopover from "../add-bag-popover/add-bag-popover.component";
 

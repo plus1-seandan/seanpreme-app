@@ -1,4 +1,15 @@
 .shop-page {
+  .shop-page-header {
+    display: flex;
+    justify-content: center;
+  }
+  .shop-page-header__filter {
+    position: absolute;
+    margin: 1rem;
+    right: 0;
+    width: 13rem;
+    border: 1px solid black;
+  }
   .shop-page-body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;

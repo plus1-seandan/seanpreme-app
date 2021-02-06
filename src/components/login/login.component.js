@@ -6,8 +6,8 @@ import { withRouter } from "react-router-dom";
 
 import CustomButton from "../custom-button/custom-button.component";
 import FormInput from "../form-input/form-input.component";
-import "./login.styles.scss";
 import { setCurrUser } from "../../redux/user/user.actions";
+import "./login.styles.scss";
 
 class Login extends React.Component {
   constructor(props) {

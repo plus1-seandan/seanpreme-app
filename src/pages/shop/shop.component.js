@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Select } from "@chakra-ui/react";
 
-import "./shop.styles.scss";
 import Collection from "../../components/collection/collection.component";
 import CustomButton from "../../components/custom-button/custom-button.component";
 import CollectionFilter from "../../components/collection-filter/collection-filter.component";
 import ScrollToTopButton from "../../components/scroll-to-top-button/scroll-to-top.component";
-
-const INIT_STATE = {
-  collection: null,
-  items: [],
-};
+import "./shop.styles.scss";
 
 const ShopPage = () => {
   const { collectionId } = useParams();
+  const INIT_STATE = {
+    collectionId,
+    collection: null,
+    items: [],
+    filters: [],
+    sort: "new",
+  };
   const [collection, setCollection] = useState(INIT_STATE);
   const [isLoading, setLoading] = useState(true);
   //setting tha initial page
@@ -29,6 +32,12 @@ const ShopPage = () => {
   }, [collectionId]);
 
   useEffect(() => {
+    setCollection({ ...INIT_STATE, sort: collection.sort });
+    setPage(0);
+    setHasMore(true);
+  }, [collection.sort]);
+
+  useEffect(() => {
     if (collection.items.length === 0) {
       loadMoreItems();
     }
@@ -40,9 +49,15 @@ const ShopPage = () => {
       const { data } = await axios({
         method: "GET",
         url: `http://localhost:5000/collections?id=${collectionId}`,
-        params: { _page: page, _limit: 12, _collectionId: collectionId },
+        params: {
+          _page: page,
+          _limit: 12,
+          _collectionId: collectionId,
+          _sort: collection.sort,
+        },
       });
       setCollection({
+        ...collection,
         collection: data.collection,
         items: [...collection.items, ...data.items.items],
       });
@@ -54,6 +69,25 @@ const ShopPage = () => {
 
   return (
     <div className="shop-page">
+      <div className="shop-page-header">
+        <h1 className="collection__title">
+          {collection?.collection?.collectionName.toUpperCase()}
+        </h1>
+        <div className="shop-page-header__filter">
+          <Select
+            onChange={(e) =>
+              setCollection({ ...collection, sort: e.target.value })
+            }
+            value={collection.sort}
+          >
+            {/* <option value="featured">FEATURED</option>
+            <option value="bestsellers">BESTSELLERS</option> */}
+            <option value="new">NEWEST ARRIVALS</option>
+            <option value="pricelowhigh">PRICE LOW - HIGH</option>
+            <option value="pricehighlow">PRICE HIGH - LOW</option>
+          </Select>
+        </div>
+      </div>
       <div className="shop-page-body">
         <div className="collection-filter">
           <CollectionFilter />

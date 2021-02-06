@@ -1,21 +1,12 @@
 import { connect } from "react-redux";
 import axios from "axios";
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
-} from "@chakra-ui/react";
+import { Table, Thead, Tbody, Tfoot, Tr, Th, Td } from "@chakra-ui/react";
 import { withRouter } from "react-router-dom";
 
 import CustomButton from "../custom-button/custom-button.component";
-import "./profile-main.styles.scss";
 import { logoutUser } from "../../redux/user/user.actions";
 import { clearCart } from "../../redux/cart/cart.actions";
+import "./profile-main.styles.scss";
 
 const ProfileMain = ({ user, logoutUser, history, clearCart }) => {
   const handleLogout = async () => {

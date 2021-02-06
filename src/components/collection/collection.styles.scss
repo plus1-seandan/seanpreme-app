@@ -6,22 +6,7 @@
     font-weight: 600;
     font-family: Arial, sans-serif;
   }
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 
-    span {
-      margin: 0 0 1rem 1rem;
-      color: #525252;
-    }
-    &__filter {
-      margin: 0 1rem 1rem 0;
-      width: 12rem;
-      outline: none;
-      border: 2px solid black;
-    }
-  }
   &__items {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
