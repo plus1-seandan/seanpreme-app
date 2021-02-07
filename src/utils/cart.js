@@ -35,3 +35,18 @@ export const removeCartItem = (cartItems, cartItemToRemove) => {
       : cartItem
   );
 };
+
+export const editCartItem = (cartItems, cartItemToEdit) => {
+  console.log({ old: cartItemToEdit.oldItem, cartItems });
+  const oldItem = cartItems.find(
+    (cartItem) =>
+      cartItem.id === cartItemToEdit.oldItem.id &&
+      cartItem.size === cartItemToEdit.oldItem.size.toLowerCase()
+  );
+  //remove old item
+  const newCart = cartItems.filter((cartItem) => cartItem !== oldItem);
+  return addItemToCart(newCart, {
+    ...cartItemToEdit.newItem,
+    size: cartItemToEdit.newItem.size.toLowerCase(),
+  });
+};

@@ -6,7 +6,11 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import CustomButton from "../custom-button/custom-button.component";
 import LoadingSpinner from "../loading-spinner/loading-spinner.component";
 import { useState } from "react";
-import { addItem, toggleCartHidden } from "../../redux/cart/cart.actions";
+import {
+  addItem,
+  editItem,
+  toggleCartHidden,
+} from "../../redux/cart/cart.actions";
 import "./product-info.styles.scss";
 import { isAuthenticated } from "../../utils/auth";
 import axios from "axios";
@@ -82,6 +86,7 @@ const Sizes = ({ size, setSize }) => {
 const ProductInfo = ({
   product,
   addItem,
+  editItem,
   toggleCartHidden,
   edit,
   initSize,
@@ -106,6 +111,16 @@ const ProductInfo = ({
     setSize(null);
   };
 
+  const handleEditCart = () => {
+    //size hasn't changed
+    if (initSize === size) {
+      return;
+    }
+    editItem({
+      oldItem: { ...product, size: initSize.toUpperCase() },
+      newItem: { ...product, size: size.toUpperCase() },
+    });
+  };
   const handleAddToFavorites = async () => {
     try {
       const isAuth = await isAuthenticated();
@@ -149,7 +164,7 @@ const ProductInfo = ({
       </div>
       <div className="product-buttons">
         {edit ? (
-          <CustomButton>Edit Cart</CustomButton>
+          <CustomButton onClick={handleEditCart}>Edit Cart</CustomButton>
         ) : (
           <CustomButton onClick={handleAddToCart}>ADD TO BAG</CustomButton>
         )}
@@ -171,6 +186,7 @@ const ProductInfo = ({
 
 const mapDispatchToProps = (dispatch) => ({
   addItem: (item) => dispatch(addItem(item)),
+  editItem: (item) => dispatch(editItem(item)),
   toggleCartHidden: () => dispatch(toggleCartHidden()),
 });
 
