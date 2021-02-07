@@ -49,7 +49,9 @@ const Header = ({ currUser, hidden }) => {
             </Link>
           </div>
           <div className="header__main__icon">
-            <FavoriteBorderIcon fontSize="large" />
+            <Link to="/favorites">
+              <FavoriteBorderIcon fontSize="large" />
+            </Link>
           </div>
           <Link to="/profile">
             {currUser ? (

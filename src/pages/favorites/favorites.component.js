@@ -22,7 +22,6 @@ const FavoritesPage = () => {
   return (
     <div className="favorites-page">
       <h1>MY FAVORITES</h1>
-
       {isAuth ? (
         <div className="favorites-main">My Favorites</div>
       ) : (

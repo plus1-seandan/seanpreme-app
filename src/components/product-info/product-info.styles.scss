@@ -30,6 +30,28 @@
     }
   }
 
+  .product-buttons {
+    display: flex;
+    width: 15rem;
+    justify-content: space-between;
+
+    .favorite-button {
+      width: 3rem;
+      border: 3px solid black;
+      outline: none;
+
+      .favorite-icon {
+        font-size: 2.5rem;
+      }
+    }
+    .favorite-button:hover {
+      background-color: #8b0000;
+
+      .favorite-icon {
+        color: white;
+      }
+    }
+  }
   .product-details {
     font-size: 1rem;
     font-weight: 700;

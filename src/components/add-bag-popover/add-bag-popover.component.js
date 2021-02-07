@@ -1,3 +1,4 @@
+import { useToast } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
@@ -14,15 +15,30 @@ const AddBagPopover = ({
   toggleCartHidden,
 }) => {
   const [size, setSize] = useState();
+  const toast = useToast();
 
   const handleAddToBag = () => {
     if (!size) {
+      toast({
+        title: "An error occurred.",
+        description: "Please choose a size",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
       return;
     }
     addItem(item);
     setShowPopover(!show);
     toggleCartHidden();
+    toast({
+      title: `Added item "${item.itemName}" to cart`,
+      status: "success",
+      duration: 2000,
+      isClosable: true,
+    });
   };
+
   return (
     <div className="collection-item">
       {show && (

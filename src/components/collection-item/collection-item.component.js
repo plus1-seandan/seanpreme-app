@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 
 import { addRecentlyViewedItem } from "../../redux/recently-viewed/recent.actions";
 import { useClickOutside } from "../../utils/clickOutside";
 import AddBagPopover from "../add-bag-popover/add-bag-popover.component";
 import CustomButton from "../custom-button/custom-button.component";
 import "./collection-item.styles.scss";
+import { IconButton } from "@chakra-ui/react";
 
 const CollectionItem = ({ item, addRecentItem }) => {
   const { imageUrl, itemName, price } = item;
@@ -24,6 +26,11 @@ const CollectionItem = ({ item, addRecentItem }) => {
   return (
     <div className="collection__item" ref={domNode}>
       <div className="collection__item__image">
+        {/* <div className="favorite-button-container">
+          <button className="favorite-button">
+            <FavoriteBorderIcon />
+          </button>
+        </div> */}
         <button onClick={handleClick}>
           <img src={imageUrl} alt={item.itemName} />
         </button>

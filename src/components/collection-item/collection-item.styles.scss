@@ -11,7 +11,26 @@
     border: 1px solid#C8C8C8;
     transition: 0.5s ease-out;
     height: 20rem;
+    position: relative;
 
+    .favorite-button-container {
+      position: absolute;
+      padding: 0.5rem;
+      margin: 0.2rem 0;
+      opacity: 100% !important;
+      z-index: 100;
+    }
+    .favorite-button {
+      border-radius: 50%;
+    }
+    .favorite-button:hover {
+      border: 1px solid red;
+    }
+    .favorite-button:focus {
+      border: 1px solid red;
+      background-color: red;
+      color: white;
+    }
     button {
       height: 100%;
       outline: none;
@@ -22,7 +41,7 @@
       object-fit: cover;
       overflow: hidden;
     }
-    &:hover {
+    img:hover {
       opacity: 50%;
     }
   }
@@ -31,7 +50,7 @@
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
-    height: 20%;
+    height: 100%;
     transition: 1s ease-out;
     .price {
       font-weight: 700;
@@ -39,6 +58,8 @@
     }
     .name {
       color: grey;
+      height: 3rem;
+      display: inline-block;
     }
     .add {
       display: flex;

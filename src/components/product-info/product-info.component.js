@@ -1,12 +1,15 @@
-import { Box, Center, Wrap, WrapItem } from "@chakra-ui/react";
+import { Box, Center, useToast, Wrap, WrapItem } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { connect } from "react-redux";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 
 import CustomButton from "../custom-button/custom-button.component";
 import LoadingSpinner from "../loading-spinner/loading-spinner.component";
 import { useState } from "react";
 import { addItem, toggleCartHidden } from "../../redux/cart/cart.actions";
 import "./product-info.styles.scss";
+import { isAuthenticated } from "../../utils/auth";
+import axios from "axios";
 
 const Rating = ({ stars }) => (
   <Box d="flex" mt="2" alignItems="center">
@@ -33,9 +36,7 @@ const SizeButton = ({ selected, size, ...otherProps }) => {
   }
 };
 
-const Sizes = () => {
-  const [size, setSize] = useState();
-
+const Sizes = ({ size, setSize }) => {
   return (
     <Wrap className="product-info-sizes">
       <WrapItem>
@@ -79,10 +80,54 @@ const Sizes = () => {
 };
 
 const ProductInfo = ({ product, addItem, toggleCartHidden }) => {
+  const [size, setSize] = useState(null);
+  const toast = useToast();
+
   const handleAddToCart = () => {
-    console.log("hit this line");
+    if (size === null) {
+      toast({
+        title: "An error occurred.",
+        description: "Please choose a size",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+      return;
+    }
     addItem(product);
     toggleCartHidden();
+    setSize(null);
+  };
+
+  const handleAddToFavorites = async () => {
+    try {
+      const isAuth = await isAuthenticated();
+      if (!isAuth) {
+        toast({
+          title: "Please log in to add to favorites",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
+        return;
+      }
+      await axios.post(
+        `http://localhost:5000/products/favorites`,
+        {
+          productId: product.id,
+        },
+        { withCredentials: "include" }
+      );
+      toast({
+        title: `Added "${product.itemName}" to your favorites`,
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+      });
+      return;
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
@@ -93,9 +138,18 @@ const ProductInfo = ({ product, addItem, toggleCartHidden }) => {
       </div>
       <h2 className="product-price">${product.price} USD</h2>
       <div className="product-size">
-        <Sizes />
+        <Sizes size={size} setSize={setSize} />
       </div>
-      <CustomButton onClick={handleAddToCart}>ADD TO BAG</CustomButton>
+      <div className="product-buttons">
+        <CustomButton onClick={handleAddToCart}>ADD TO BAG</CustomButton>
+        <CustomButton
+          onClick={handleAddToFavorites}
+          inverted
+          className="favorite-button"
+        >
+          <FavoriteBorderIcon className="favorite-icon" fontSize="large" />
+        </CustomButton>
+      </div>
       <div className="product-details">
         <h2>PRODUCT DETAILS</h2>
         <p className="product-details-text">{product.description}</p>
