@@ -90,9 +90,10 @@ const ProductInfo = ({
   toggleCartHidden,
   edit,
   initSize,
+  onClose,
 }) => {
   //size is null unless it's being edited from cart
-  const [size, setSize] = useState(initSize?.toUpperCase());
+  const [size, setSize] = useState(initSize ? initSize : null);
   const toast = useToast();
 
   const handleAddToCart = () => {
@@ -117,9 +118,10 @@ const ProductInfo = ({
       return;
     }
     editItem({
-      oldItem: { ...product, size: initSize.toUpperCase() },
-      newItem: { ...product, size: size.toUpperCase() },
+      oldItem: { ...product, size: initSize },
+      newItem: { ...product, size },
     });
+    onClose();
   };
   const handleAddToFavorites = async () => {
     try {

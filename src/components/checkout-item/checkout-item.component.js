@@ -29,7 +29,12 @@ const EditCartItemModal = ({ item, isOpen, onClose, initSize }) => (
             <ProductImage product={item} />
           </div>
           <div>
-            <ProductInfo product={item} edit={true} initSize={initSize} />
+            <ProductInfo
+              product={item}
+              edit={true}
+              initSize={initSize}
+              onClose={onClose}
+            />
           </div>
         </div>
       </ModalBody>

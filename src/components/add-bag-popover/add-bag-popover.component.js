@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import { addItem, toggleCartHidden } from "../../redux/cart/cart.actions";
+import { SizeTypes } from "../../utils/size";
 import CustomButton from "../custom-button/custom-button.component";
 
 import "./add-bag-popover.styles.scss";
@@ -46,28 +47,28 @@ const AddBagPopover = ({
           <span>select size</span>
           <button
             class="add-bag-button"
-            value="s"
+            value={SizeTypes.S}
             onClick={(e) => setSize(e.target.value)}
           >
             S
           </button>
           <button
             class="add-bag-button"
-            value="m"
+            value={SizeTypes.M}
             onClick={(e) => setSize(e.target.value)}
           >
             M
           </button>
           <button
             class="add-bag-button"
-            value="l"
+            value={SizeTypes.L}
             onClick={(e) => setSize(e.target.value)}
           >
             L
           </button>
           <button
             class="add-bag-button"
-            value="xl"
+            value={SizeTypes.XL}
             onClick={(e) => setSize(e.target.value)}
           >
             XL

@@ -37,16 +37,16 @@ export const removeCartItem = (cartItems, cartItemToRemove) => {
 };
 
 export const editCartItem = (cartItems, cartItemToEdit) => {
-  console.log({ old: cartItemToEdit.oldItem, cartItems });
+  //remove old item
   const oldItem = cartItems.find(
     (cartItem) =>
       cartItem.id === cartItemToEdit.oldItem.id &&
-      cartItem.size === cartItemToEdit.oldItem.size.toLowerCase()
+      cartItem.size === cartItemToEdit.oldItem.size
   );
-  //remove old item
+  //add new item
   const newCart = cartItems.filter((cartItem) => cartItem !== oldItem);
   return addItemToCart(newCart, {
     ...cartItemToEdit.newItem,
-    size: cartItemToEdit.newItem.size.toLowerCase(),
+    size: cartItemToEdit.newItem.size,
   });
 };
