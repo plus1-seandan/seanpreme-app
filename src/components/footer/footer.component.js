@@ -45,7 +45,9 @@ const FooterActions = () => (
       Be the first to know about our secret sales, product giveaways, collection
       drops, most-wanted restocks, & more!
     </p>
-    <CustomButton inverted>SIGN UP</CustomButton>
+    <Link href="./sign-in">
+      <CustomButton inverted>SIGN UP</CustomButton>
+    </Link>
   </div>
 );
 

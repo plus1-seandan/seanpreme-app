@@ -28,7 +28,7 @@ const AddBagPopover = ({
       });
       return;
     }
-    addItem(item);
+    addItem({ ...item, size });
     setShowPopover(!show);
     toggleCartHidden();
     toast({

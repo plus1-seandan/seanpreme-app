@@ -79,8 +79,15 @@ const Sizes = ({ size, setSize }) => {
   );
 };
 
-const ProductInfo = ({ product, addItem, toggleCartHidden }) => {
-  const [size, setSize] = useState(null);
+const ProductInfo = ({
+  product,
+  addItem,
+  toggleCartHidden,
+  edit,
+  initSize,
+}) => {
+  //size is null unless it's being edited from cart
+  const [size, setSize] = useState(initSize?.toUpperCase());
   const toast = useToast();
 
   const handleAddToCart = () => {
@@ -94,7 +101,7 @@ const ProductInfo = ({ product, addItem, toggleCartHidden }) => {
       });
       return;
     }
-    addItem(product);
+    addItem({ ...product, size });
     toggleCartHidden();
     setSize(null);
   };
@@ -141,7 +148,11 @@ const ProductInfo = ({ product, addItem, toggleCartHidden }) => {
         <Sizes size={size} setSize={setSize} />
       </div>
       <div className="product-buttons">
-        <CustomButton onClick={handleAddToCart}>ADD TO BAG</CustomButton>
+        {edit ? (
+          <CustomButton>Edit Cart</CustomButton>
+        ) : (
+          <CustomButton onClick={handleAddToCart}>ADD TO BAG</CustomButton>
+        )}
         <CustomButton
           onClick={handleAddToFavorites}
           inverted
