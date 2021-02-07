@@ -1,11 +1,18 @@
+.collection-item-delete-container {
+  position: relative;
+  .collection-item-deelte-button {
+    position: absolute;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+    width: 1rem;
+    top: 1.2rem;
+    z-index: 100;
+  }
+}
 .collection__item {
   width: 100%; /*or 70%, or what you want*/
   height: 30rem; /*or 70%, or what you want*/
-  // background-size: cover;
-  // background-position: center;
-  // background-repeat: no-repeat;
   margin-top: 1rem;
-  // height: 20rem;
 
   &__image {
     border: 1px solid#C8C8C8;

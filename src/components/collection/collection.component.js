@@ -4,7 +4,7 @@ import { Select, Spinner } from "@chakra-ui/react";
 import CollectionItem from "../collection-item/collection-item.component";
 import "./collection.styles.scss";
 
-const Collection = ({ isLoading, collection }) => {
+const Collection = ({ isLoading, collection, ...otherprops }) => {
   if (!collection || !collection.collection) {
     return (
       <div className="load-items-spinner">
@@ -17,7 +17,7 @@ const Collection = ({ isLoading, collection }) => {
     <div className="collection">
       <div className="collection__items">
         {collection.items.map((item) => (
-          <CollectionItem key={item.id} item={item} />
+          <CollectionItem key={item.id} item={item} {...otherprops} />
         ))}
       </div>
       {isLoading && (

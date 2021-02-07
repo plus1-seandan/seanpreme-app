@@ -1,19 +1,50 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import ClearIcon from "@material-ui/icons/Clear";
 
 import { addRecentlyViewedItem } from "../../redux/recently-viewed/recent.actions";
 import { useClickOutside } from "../../utils/clickOutside";
 import AddBagPopover from "../add-bag-popover/add-bag-popover.component";
 import CustomButton from "../custom-button/custom-button.component";
 import "./collection-item.styles.scss";
-import { IconButton } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
+import axios from "axios";
+
+const CollectionItemWrapper = (WrappedComponent) => {
+  const collectionItem = ({ hasDelete, item, ...otherProps }) => {
+    const handleRemoveItem = async () => {
+      await axios({
+        method: "delete",
+        url: `http://localhost:5000/products/favorites`,
+        data: item,
+        withCredentials: "include",
+      });
+    };
+    if (hasDelete) {
+      return (
+        <div className="collection-item-delete-container">
+          <Button
+            className="collection-item-deelte-button"
+            onClick={handleRemoveItem}
+          >
+            <ClearIcon />
+          </Button>
+          <WrappedComponent item={item} {...otherProps} />
+        </div>
+      );
+    }
+    return <WrappedComponent item={item} {...otherProps} />;
+  };
+  return collectionItem;
+};
 
 const CollectionItem = ({ item, addRecentItem }) => {
   const { imageUrl, itemName, price } = item;
   const [showPopover, setShowPopover] = useState(false);
   const history = useHistory();
+
+  console.log({ item });
 
   let domNode = useClickOutside(() => {
     setShowPopover(false);
@@ -55,4 +86,6 @@ const mapDispatchToProps = (dispatch) => ({
   addRecentItem: (item) => dispatch(addRecentlyViewedItem(item)),
 });
 
-export default connect(null, mapDispatchToProps)(CollectionItem);
+export default CollectionItemWrapper(
+  connect(null, mapDispatchToProps)(CollectionItem)
+);

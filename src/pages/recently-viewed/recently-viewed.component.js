@@ -10,7 +10,6 @@ import { clearRecentlyViewedItems } from "../../redux/recently-viewed/recent.act
 import "./recently-viewed.styles.scss";
 
 const RecentlyViewedPage = ({ recentItems, clearRecentItems }) => {
-  console.log({ recentItems });
   return (
     <div className="shop-page">
       <div className="shop-page-header">
