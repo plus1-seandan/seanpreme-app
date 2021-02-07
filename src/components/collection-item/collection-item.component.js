@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import ClearIcon from "@material-ui/icons/Clear";
 
 import { addRecentlyViewedItem } from "../../redux/recently-viewed/recent.actions";
@@ -12,7 +12,9 @@ import { Button } from "@chakra-ui/react";
 import axios from "axios";
 
 const CollectionItemWrapper = (WrappedComponent) => {
-  const collectionItem = ({ hasDelete, item, ...otherProps }) => {
+  const _CollectionItem = ({ hasDelete, item, ...otherProps }) => {
+    const dispatch = useDispatch();
+
     const handleRemoveItem = async () => {
       await axios({
         method: "delete",
@@ -20,7 +22,9 @@ const CollectionItemWrapper = (WrappedComponent) => {
         data: item,
         withCredentials: "include",
       });
+      dispatch({ type: "REMOVE_FAV_ITEM", payload: item });
     };
+
     if (hasDelete) {
       return (
         <div className="collection-item-delete-container">
@@ -36,15 +40,13 @@ const CollectionItemWrapper = (WrappedComponent) => {
     }
     return <WrappedComponent item={item} {...otherProps} />;
   };
-  return collectionItem;
+  return _CollectionItem;
 };
 
 const CollectionItem = ({ item, addRecentItem }) => {
   const { imageUrl, itemName, price } = item;
   const [showPopover, setShowPopover] = useState(false);
   const history = useHistory();
-
-  console.log({ item });
 
   let domNode = useClickOutside(() => {
     setShowPopover(false);

@@ -18,7 +18,6 @@ const ProductPage = () => {
         method: "GET",
         url: `http://localhost:5000/products?id=${productId}`,
       });
-      console.log({ data });
       setProduct(data);
       setIsLoading(false);
       scrollToTop();

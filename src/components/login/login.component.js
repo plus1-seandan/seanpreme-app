@@ -31,7 +31,6 @@ class Login extends React.Component {
         { withCredentials: "include" }
       );
       if (res.data) {
-        console.log({ user: res.data });
         setCurrUser(res.data);
         this.props.history.push("/");
       }
@@ -54,7 +53,6 @@ class Login extends React.Component {
     );
 
     if (res.data) {
-      console.log({ user: res.data });
       setCurrUser(res.data);
       this.props.history.push("/");
     }

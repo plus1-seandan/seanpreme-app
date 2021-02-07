@@ -2,6 +2,11 @@ import axios from "axios";
 
 import FavoritesActionTypes from "./favorites.types";
 
+export const removeFavItem = (item) => ({
+  type: FavoritesActionTypes.REMOVE_FAV_ITEM,
+  payload: item,
+});
+
 export const fetchFavoritesStart = () => ({
   type: FavoritesActionTypes.FETCH_FAVORITES_START,
 });

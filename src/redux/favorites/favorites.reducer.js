@@ -1,3 +1,4 @@
+import { removeFavoriteItem } from "../../utils/favorites";
 import FavoritesActionTypes from "./favorites.types";
 
 const INITIAL_STATE = {
@@ -8,6 +9,12 @@ const INITIAL_STATE = {
 
 const favoritesReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case FavoritesActionTypes.REMOVE_FAV_ITEM:
+      return {
+        ...state,
+        favorites: removeFavoriteItem(state.favorites, action.payload),
+      };
+
     case FavoritesActionTypes.FETCH_FAVORITES_START:
       return {
         ...state,

@@ -44,7 +44,7 @@ const FavoritesPage = ({
             <div className="shop-page-body">
               <div className="collection-main">
                 {favorites.length === 0 ? (
-                  <h1 className="no-recent-items-msg">No Favorite Items</h1>
+                  <h1 className="no-fav-items-msg">No Favorite Items</h1>
                 ) : (
                   <Collection
                     isLoading={false}
@@ -61,7 +61,6 @@ const FavoritesPage = ({
               </div>
             </div>
           </div>
-          );
         </div>
       ) : (
         <div className="please-login">
