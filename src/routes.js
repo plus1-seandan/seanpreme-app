@@ -14,12 +14,12 @@ import ProductPage from "./pages/product/product.component";
 import RecentlyViewedPage from "./pages/recently-viewed/recently-viewed.component";
 import FavoritesPage from "./pages/favorites/favorites.component";
 
-const PrivateRoute = ({ component: Component, user, ...rest }) => {
+const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
       render={(props) => {
-        if (user?.token) {
+        if (localStorage.getItem("token")) {
           return <Component {...rest} {...props} />;
         } else {
           return (
@@ -45,12 +45,7 @@ class Routes extends React.Component {
           <Route exact path="/checkout" component={CheckoutPage} />
           <Route path="/collections/:collectionId" component={ShopPage} />
           <Route path="/products/:productId" component={ProductPage} />
-          <PrivateRoute
-            path="/profile"
-            exact
-            user={this.props.currUser}
-            component={ProfilePage}
-          />
+          <PrivateRoute path="/profile" exact component={ProfilePage} />
           <Route exact path="/sign-in" component={LoginRegisterPage} />
           <Route exact path="/recently-viewed" component={RecentlyViewedPage} />
           <Route exact path="/favorites" component={FavoritesPage} />
@@ -62,6 +57,6 @@ class Routes extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  currUser: selectCurrentUser(state),
+  // currUser: selectCurrentUser(state),
 });
 export default connect(mapStateToProps)(Routes);

@@ -30,7 +30,6 @@ class Login extends React.Component {
         this.state
       );
       if (res.data) {
-        console.log({ res });
         setCurrUser(res.data);
         localStorage.setItem("token", res.data.token);
         this.props.history.push("/");

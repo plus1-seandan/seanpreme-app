@@ -23,21 +23,15 @@ export const fetchFavoritesFailure = (errMsg) => ({
 export const fetchFavoritesStartAsync = () => {
   return async (dispatch) => {
     try {
-      dispatch(fetchFavoritesStart);
+      dispatch(fetchFavoritesStart());
       const { data } = await axios({
-        method: "get", //you can set what request you want to be
+        method: "get",
         url: `${process.env.REACT_APP_SERVER_URL}/products/favorites`,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
       });
-      // const { data } = await axios.get(
-      //   "http://localhost:5000/products/favorites",
-      //   {
-      //     withCredentials: "include",
-      //   }
-      // );
-      dispatch(fetchFavoritesSuccess(data));
+      await dispatch(fetchFavoritesSuccess(data));
     } catch (e) {
       console.log(e);
       dispatch(fetchFavoritesFailure(e.message));

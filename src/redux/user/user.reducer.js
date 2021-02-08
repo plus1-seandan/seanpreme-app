@@ -12,6 +12,8 @@ const userReducer = (state = INIT_STATE, action) => {
         currUser: action.payload,
       };
     case UserActionTypes.LOGOUT_CURR_USER:
+      //clear token and clear user
+      localStorage.removeItem("token");
       state = INIT_STATE;
       return state;
     default:

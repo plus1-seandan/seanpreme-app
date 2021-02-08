@@ -14,7 +14,6 @@ const favoritesReducer = (state = INITIAL_STATE, action) => {
         ...state,
         favorites: removeFavoriteItem(state.favorites, action.payload),
       };
-
     case FavoritesActionTypes.FETCH_FAVORITES_START:
       return {
         ...state,
