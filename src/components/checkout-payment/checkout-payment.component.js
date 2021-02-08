@@ -64,7 +64,10 @@ const StripeCheckout = ({ total }) => {
             <h1>Total</h1> <span>${total}</span>
           </div>
           <div className="notes">
-            <p>*** Card #: 4242 4242 4242 4242 MM/YY: 12/21 ZIP: 12345 ***</p>
+            <p>
+              *** FOR TESTING: <b>Card #</b>: 4242 4242 4242 4242 <b>MM/YY</b>:
+              12/21 <b>CVC</b>: 123 <b>ZIP</b>: 12345 ***
+            </p>
           </div>
         </div>
       </div>
