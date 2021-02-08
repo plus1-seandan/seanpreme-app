@@ -48,12 +48,11 @@ class Login extends React.Component {
 
     const res = await axios.post(
       `${process.env.REACT_APP_SERVER_URL}/auth/google`,
-      { token: response.tokenId },
-      { withCredentials: true }
+      { token: response.tokenId }
     );
-
     if (res.data) {
       setCurrUser(res.data);
+      localStorage.setItem("token", res.data.token);
       this.props.history.push("/");
     }
   };

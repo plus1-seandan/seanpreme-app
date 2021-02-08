@@ -1,4 +1,4 @@
-import { Link } from "@chakra-ui/react";
+import { Link, Spinner } from "@chakra-ui/react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { createStructuredSelector } from "reselect";
@@ -24,7 +24,12 @@ const FavoritesPage = ({ isFavoritesFetching, fetchFavorites, favorites }) => {
   }, []);
 
   if (isFavoritesFetching) {
-    return <div>...loading</div>;
+    return (
+      <div className="load-items-spinner">
+        <span>loading...</span>
+        <Spinner size="xl" />
+      </div>
+    );
   }
   return (
     <div className="favorites-page">

@@ -128,7 +128,7 @@ const ProductInfo = ({
   };
   const handleAddToFavorites = async () => {
     try {
-      if (!currUser?.token) {
+      if (!isAuthenticated()) {
         toast({
           title: "Please log in to add to favorites",
           status: "error",
@@ -137,13 +137,17 @@ const ProductInfo = ({
         });
         return;
       }
-      await axios.post(
-        `${process.env.REACT_APP_SERVER_URL}/products/favorites`,
-        {
+      await axios({
+        method: "post",
+        url: `${process.env.REACT_APP_SERVER_URL}/products/favorites`,
+        data: {
           productId: product.id,
         },
-        { withCredentials: "include" }
-      );
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
+
       toast({
         title: `Added "${product.itemName}" to your favorites`,
         status: "success",

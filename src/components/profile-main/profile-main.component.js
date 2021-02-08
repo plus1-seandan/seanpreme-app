@@ -11,17 +11,6 @@ import "./profile-main.styles.scss";
 const ProfileMain = ({ user, logoutUser, history, clearCart }) => {
   const handleLogout = async () => {
     try {
-      //backend call to destroy session
-      // await axios.post(
-      //   `${process.env.REACT_APP_SERVER_URL}/users/logout`,
-      //   null,
-      //   {
-      //     withCredentials: "include",
-      //   }
-      // );
-      //action to remove user from redux store
-      // logoutUser();
-      //redirect to home
       history.push("/");
       logoutUser();
       clearCart();

@@ -20,7 +20,6 @@ const CollectionItemWrapper = (WrappedComponent) => {
         method: "delete",
         url: `${process.env.REACT_APP_SERVER_URL}/products/favorites`,
         data: item,
-        withCredentials: "include",
       });
       dispatch({ type: "REMOVE_FAV_ITEM", payload: item });
     };
