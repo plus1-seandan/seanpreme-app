@@ -10,6 +10,8 @@ Check out a demo of this app [here](http://truculent-sister.surge.sh/).
 
 Note: This is in combination with the backend project ([repo](https://github.com/seanysdan/ecommerce-server)).
 
+![](seanpreme.gif)
+
 ## Tech Stack
 
 React<br/>

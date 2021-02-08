@@ -16,8 +16,12 @@ const Collection = ({ isLoading, collection, ...otherprops }) => {
   return (
     <div className="collection">
       <div className="collection__items">
-        {collection.items.map((item) => (
-          <CollectionItem key={item.id} item={item} {...otherprops} />
+        {collection.items.map((item, idx) => (
+          <CollectionItem
+            key={`${item.id} ${idx}`}
+            item={item}
+            {...otherprops}
+          />
         ))}
       </div>
       {isLoading && (

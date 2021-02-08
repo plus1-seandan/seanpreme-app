@@ -35,10 +35,14 @@ const Header = ({ currUser, hidden }) => {
         </div>
         <div className="header__main__center">
           {/* <div className="header__main__search">Search</div> */}
-          <form action="#" class="search">
-            <input type="text" class="search__input" placeholder="Search..." />
-            <button class="search__button">
-              <SearchIcon class="search__icon" />
+          <form action="#" className="search">
+            <input
+              type="text"
+              className="search__input"
+              placeholder="Search..."
+            />
+            <button className="search__button">
+              <SearchIcon className="search__icon" />
             </button>
           </form>
         </div>

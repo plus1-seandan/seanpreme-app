@@ -22,7 +22,7 @@ const CollectionFilter = () => {
   return (
     <div className="collection-filter">
       {Object.keys(data).map((type) => (
-        <FilterGroup type={type} filters={data[type]} />
+        <FilterGroup key={type} type={type} filters={data[type]} />
       ))}
     </div>
   );
@@ -33,12 +33,15 @@ const FilterGroup = ({ type, filters }) => {
 
   return (
     <div className="filter-group">
-      <div class="collapsible" onClick={() => setShow(!show)}>
+      <div className="collapsible" onClick={() => setShow(!show)}>
         <span>{type}</span>
         <KeyboardArrowDownIcon />
       </div>
 
-      {show && filters.map((filter) => <CustomCheckbox filter={filter} />)}
+      {show &&
+        filters.map((filter) => (
+          <CustomCheckbox key={filter} filter={filter} />
+        ))}
     </div>
   );
 };

@@ -30,6 +30,7 @@ const AddBagPopover = ({
       return;
     }
     addItem({ ...item, size });
+    setSize(null);
     setShowPopover(!show);
     toggleCartHidden();
     toast({
@@ -46,28 +47,28 @@ const AddBagPopover = ({
         <div className="add-bag-popover">
           <span>select size</span>
           <button
-            class="add-bag-button"
+            className="add-bag-button"
             value={SizeTypes.S}
             onClick={(e) => setSize(e.target.value)}
           >
             S
           </button>
           <button
-            class="add-bag-button"
+            className="add-bag-button"
             value={SizeTypes.M}
             onClick={(e) => setSize(e.target.value)}
           >
             M
           </button>
           <button
-            class="add-bag-button"
+            className="add-bag-button"
             value={SizeTypes.L}
             onClick={(e) => setSize(e.target.value)}
           >
             L
           </button>
           <button
-            class="add-bag-button"
+            className="add-bag-button"
             value={SizeTypes.XL}
             onClick={(e) => setSize(e.target.value)}
           >

@@ -111,6 +111,7 @@ const ProductInfo = ({
       return;
     }
     addItem({ ...product, size });
+    setSize(null);
     toggleCartHidden();
     setSize(null);
   };
