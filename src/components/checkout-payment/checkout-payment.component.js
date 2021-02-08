@@ -59,8 +59,14 @@ const StripeCheckout = ({ total }) => {
   return (
     <div className="checkout-form-body">
       <div className="checkout-total">
-        <h1>Total</h1>
-        <span>${total}</span>
+        <div className="checkout-total-header">
+          <div className="total">
+            <h1>Total</h1> <span>${total}</span>
+          </div>
+          <div className="notes">
+            <p>*** Card #: 4242 4242 4242 4242 MM/YY: 12/21 ZIP: 12345 ***</p>
+          </div>
+        </div>
       </div>
       <div>
         <Elements stripe={stripePromise}>

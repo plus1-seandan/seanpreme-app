@@ -23,7 +23,7 @@ const FavoritesPage = ({ isFavoritesFetching, fetchFavorites, favorites }) => {
     asyncFunc();
   }, []);
 
-  if (isFavoritesFetching) {
+  if (isFavoritesFetching || favorites === "fail") {
     return (
       <div className="load-items-spinner">
         <span>loading...</span>
@@ -42,7 +42,6 @@ const FavoritesPage = ({ isFavoritesFetching, fetchFavorites, favorites }) => {
                 {favorites?.length === 0 ? (
                   <h1 className="no-fav-items-msg">No Favorite Items</h1>
                 ) : (
-                  // <div>test</div>
                   <Collection
                     isLoading={false}
                     collection={{

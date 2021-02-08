@@ -17,6 +17,19 @@
       font-size: large;
       font-weight: 700;
     }
+    .checkout-total-header {
+      text-align: center;
+      .total {
+        display: flex;
+        justify-content: center;
+      }
+      .notes {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        color: red;
+      }
+    }
   }
 }
 
