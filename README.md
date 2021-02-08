@@ -1,4 +1,4 @@
-![./src/assets](logo.png)
+![](logo.png)
 
 # SeanPreme - Client
 
