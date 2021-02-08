@@ -12,7 +12,7 @@ Note: This is in combination with the backend project ([repo](https://github.com
 
 ## Install
 
-    $ git clone https://github.com/seanysdan/honey-donuts-frontend.git
+    $ git clone https://github.com/seanysdan/eccommerce-app.git
     $ cd honey-donuts-frontend
     $ yarn install
 
