@@ -10,6 +10,17 @@ Check out a demo of this app [here](http://truculent-sister.surge.sh/).
 
 Note: This is in combination with the backend project ([repo](https://github.com/seanysdan/ecommerce-server)).
 
+## Tech Stack
+
+React<br/>
+Chakra-UI<br/>
+Redux<br/>
+Redux-Thunk<br/>
+
+<br/>
+Deployment:<br/>
+Surge<br/>
+
 ## Install
 
     $ git clone https://github.com/seanysdan/eccommerce-app.git
