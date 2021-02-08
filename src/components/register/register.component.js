@@ -32,7 +32,7 @@ class Register extends React.Component {
       return;
     }
     try {
-      await axios.post("http://localhost:5000/users", this.state);
+      await axios.post(`${process.env.REACT_APP_SERVER_URL}/users`, this.state);
       this.setState({
         firstName: "",
         lastName: "",

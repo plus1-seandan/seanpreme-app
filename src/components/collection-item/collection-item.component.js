@@ -18,7 +18,7 @@ const CollectionItemWrapper = (WrappedComponent) => {
     const handleRemoveItem = async () => {
       await axios({
         method: "delete",
-        url: `http://localhost:5000/products/favorites`,
+        url: `${process.env.REACT_APP_SERVER_URL}/products/favorites`,
         data: item,
         withCredentials: "include",
       });

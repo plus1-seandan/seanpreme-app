@@ -13,32 +13,29 @@ import {
 } from "../../redux/favorites/favorites.selectors";
 import { isAuthenticated } from "../../utils/auth";
 import "./favorites.styles.scss";
+import { selectCurrentUser } from "../../redux/user/user.selectors";
 
 const FavoritesPage = ({
   isFavoritesFetching,
-  fetchFavoritesStartAsync,
+  fetchFavorites,
   favorites,
+  currUser,
 }) => {
-  const [isAuth, setIsAuth] = useState(null);
-
   useEffect(() => {
     const asyncFunc = async () => {
-      const _isAuth = await isAuthenticated();
-      setIsAuth(_isAuth);
-      if (_isAuth) {
-        fetchFavoritesStartAsync();
-      }
+      fetchFavorites();
     };
     asyncFunc();
   }, []);
 
-  if (isAuth === null || isFavoritesFetching) {
+  if (isFavoritesFetching) {
     return <div>...loading</div>;
   }
+  console.log({ favorites });
   return (
     <div className="favorites-page">
       <h1>MY FAVORITES</h1>
-      {isAuth ? (
+      {currUser?.token ? (
         <div className="favorites-main">
           <div className="shop-page">
             <div className="shop-page-body">
@@ -86,10 +83,11 @@ const FavoritesPage = ({
 const mapStateToProps = createStructuredSelector({
   isFavoritesFetching: selectIsFavoritesFetching,
   favorites: selectFavorites,
+  currUser: selectCurrentUser,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchFavoritesStartAsync: () => dispatch(fetchFavoritesStartAsync()),
+  fetchFavorites: () => dispatch(fetchFavoritesStartAsync()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FavoritesPage);

@@ -16,7 +16,7 @@ const ProductPage = () => {
     const asyncFunc = async () => {
       const { data } = await axios({
         method: "GET",
-        url: `http://localhost:5000/products?id=${productId}`,
+        url: `${process.env.REACT_APP_SERVER_URL}/products?id=${productId}`,
       });
       setProduct(data);
       setIsLoading(false);

@@ -2,9 +2,12 @@ import axios from "axios";
 
 export const isAuthenticated = async () => {
   try {
-    const res = await axios.get("http://localhost:5000/auth/logged-in", {
-      withCredentials: "include",
-    });
+    const res = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/auth/logged-in`,
+      {
+        withCredentials: "include",
+      }
+    );
     if (res.data === "logged in") {
       return true;
     }

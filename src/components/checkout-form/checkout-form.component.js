@@ -57,11 +57,14 @@ const CheckoutForm = ({ status, setStatus, total, clearCart }) => {
     if (!error) {
       const { id } = paymentMethod;
       try {
-        const { data } = await axios.post("http://localhost:5000/payments", {
-          id,
-          amount: total,
-          customer: customerInfo,
-        });
+        const { data } = await axios.post(
+          `${process.env.REACT_APP_SERVER_URL}/payments`,
+          {
+            id,
+            amount: total,
+            customer: customerInfo,
+          }
+        );
         setStatus("success");
         clearCart();
       } catch (error) {

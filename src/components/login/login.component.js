@@ -26,12 +26,13 @@ class Login extends React.Component {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/auth/login",
-        this.state,
-        { withCredentials: "include" }
+        `${process.env.REACT_APP_SERVER_URL}/auth/login`,
+        this.state
       );
       if (res.data) {
+        console.log({ res });
         setCurrUser(res.data);
+        localStorage.setItem("token", res.data.token);
         this.props.history.push("/");
       }
       this.setState({
@@ -47,9 +48,9 @@ class Login extends React.Component {
     const { setCurrUser } = this.props;
 
     const res = await axios.post(
-      "http://localhost:5000/auth/google",
+      `${process.env.REACT_APP_SERVER_URL}/auth/google`,
       { token: response.tokenId },
-      { withCredentials: "include" }
+      { withCredentials: true }
     );
 
     if (res.data) {

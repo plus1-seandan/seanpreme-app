@@ -12,9 +12,13 @@ const ProfileMain = ({ user, logoutUser, history, clearCart }) => {
   const handleLogout = async () => {
     try {
       //backend call to destroy session
-      await axios.post("http://localhost:5000/users/logout", null, {
-        withCredentials: "include",
-      });
+      await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/users/logout`,
+        null,
+        {
+          withCredentials: "include",
+        }
+      );
       //action to remove user from redux store
       // logoutUser();
       //redirect to home

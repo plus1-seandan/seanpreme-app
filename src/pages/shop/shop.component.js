@@ -48,7 +48,7 @@ const ShopPage = () => {
     setTimeout(async () => {
       const { data } = await axios({
         method: "GET",
-        url: `http://localhost:5000/collections?id=${collectionId}`,
+        url: `${process.env.REACT_APP_SERVER_URL}/collections?id=${collectionId}`,
         params: {
           _page: page,
           _limit: 12,

@@ -2,7 +2,7 @@ import { removeFavoriteItem } from "../../utils/favorites";
 import FavoritesActionTypes from "./favorites.types";
 
 const INITIAL_STATE = {
-  favorites: null,
+  favorites: [],
   isFetching: false,
   errorMessage: undefined,
 };

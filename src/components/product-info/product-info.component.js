@@ -14,6 +14,8 @@ import {
 import "./product-info.styles.scss";
 import { isAuthenticated } from "../../utils/auth";
 import axios from "axios";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentUser } from "../../redux/user/user.selectors";
 
 const Rating = ({ stars }) => (
   <Box d="flex" mt="2" alignItems="center">
@@ -91,6 +93,7 @@ const ProductInfo = ({
   edit,
   initSize,
   onClose,
+  currUser,
 }) => {
   //size is null unless it's being edited from cart
   const [size, setSize] = useState(initSize ? initSize : null);
@@ -125,8 +128,7 @@ const ProductInfo = ({
   };
   const handleAddToFavorites = async () => {
     try {
-      const isAuth = await isAuthenticated();
-      if (!isAuth) {
+      if (!currUser?.token) {
         toast({
           title: "Please log in to add to favorites",
           status: "error",
@@ -136,7 +138,7 @@ const ProductInfo = ({
         return;
       }
       await axios.post(
-        `http://localhost:5000/products/favorites`,
+        `${process.env.REACT_APP_SERVER_URL}/products/favorites`,
         {
           productId: product.id,
         },
@@ -192,4 +194,11 @@ const mapDispatchToProps = (dispatch) => ({
   toggleCartHidden: () => dispatch(toggleCartHidden()),
 });
 
-export default connect(null, mapDispatchToProps)(LoadingSpinner(ProductInfo));
+const mapStateToProps = createStructuredSelector({
+  currUser: selectCurrentUser,
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoadingSpinner(ProductInfo));

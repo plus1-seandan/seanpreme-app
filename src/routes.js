@@ -1,5 +1,5 @@
+import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
 import HomePage from "./pages/homepage/homepage.component";
@@ -8,8 +8,6 @@ import Header from "./components/header/header.component";
 import LoginRegisterPage from "./pages/login-register/login-register.components";
 import { selectCurrentUser } from "./redux/user/user.selectors";
 import CheckoutPage from "./pages/checkout/checkout.component";
-import { isAuthenticated } from "./utils/auth";
-import { Spinner } from "@chakra-ui/react";
 import ProfilePage from "./pages/profile/profile.component";
 import Footer from "./components/footer/footer.component";
 import ProductPage from "./pages/product/product.component";
@@ -17,26 +15,11 @@ import RecentlyViewedPage from "./pages/recently-viewed/recently-viewed.componen
 import FavoritesPage from "./pages/favorites/favorites.component";
 
 const PrivateRoute = ({ component: Component, user, ...rest }) => {
-  const [isAuth, setIsAuth] = useState(false);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const asyncFunc = async () => {
-      const auth = await isAuthenticated();
-      setIsAuth(auth);
-      setLoading(false);
-    };
-    asyncFunc();
-  });
-
-  if (loading) {
-    return <Spinner />;
-  }
   return (
     <Route
       {...rest}
       render={(props) => {
-        if (isAuth) {
+        if (user?.token) {
           return <Component {...rest} {...props} />;
         } else {
           return (
@@ -62,7 +45,12 @@ class Routes extends React.Component {
           <Route exact path="/checkout" component={CheckoutPage} />
           <Route path="/collections/:collectionId" component={ShopPage} />
           <Route path="/products/:productId" component={ProductPage} />
-          <PrivateRoute path="/profile" exact component={ProfilePage} />
+          <PrivateRoute
+            path="/profile"
+            exact
+            user={this.props.currUser}
+            component={ProfilePage}
+          />
           <Route exact path="/sign-in" component={LoginRegisterPage} />
           <Route exact path="/recently-viewed" component={RecentlyViewedPage} />
           <Route exact path="/favorites" component={FavoritesPage} />

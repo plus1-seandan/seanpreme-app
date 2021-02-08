@@ -19,16 +19,24 @@ export const fetchFavoritesFailure = (errMsg) => ({
   type: FavoritesActionTypes.fetchFavoritesFailure,
   payload: errMsg,
 });
+
 export const fetchFavoritesStartAsync = () => {
   return async (dispatch) => {
     try {
       dispatch(fetchFavoritesStart);
-      const { data } = await axios.get(
-        "http://localhost:5000/products/favorites",
-        {
-          withCredentials: "include",
-        }
-      );
+      const { data } = await axios({
+        method: "get", //you can set what request you want to be
+        url: `${process.env.REACT_APP_SERVER_URL}/products/favorites`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
+      // const { data } = await axios.get(
+      //   "http://localhost:5000/products/favorites",
+      //   {
+      //     withCredentials: "include",
+      //   }
+      // );
       dispatch(fetchFavoritesSuccess(data));
     } catch (e) {
       console.log(e);
