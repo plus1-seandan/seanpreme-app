@@ -23,7 +23,7 @@ Surge<br/>
 
 ## Install
 
-    $ git clone https://github.com/seanysdan/eccommerce-app.git
+    $ git clone https://github.com/seanysdan/ecommerce-app.git
     $ cd ecommerce-app
     $ yarn install
 
