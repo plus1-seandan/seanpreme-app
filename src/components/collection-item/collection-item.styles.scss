@@ -19,6 +19,7 @@
     transition: 0.5s ease-out;
     height: 20rem;
     position: relative;
+    overflow: hidden;
 
     .favorite-button-container {
       position: absolute;
@@ -49,7 +50,9 @@
       overflow: hidden;
     }
     img:hover {
-      opacity: 50%;
+      // opacity: 50%;
+      transform: scale(1.5);
+      transition: transform 3s cubic-bezier(0.25, 0.45, 0.45, 0.95);
     }
   }
 

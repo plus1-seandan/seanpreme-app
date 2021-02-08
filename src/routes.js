@@ -49,6 +49,8 @@ class Routes extends React.Component {
           <Route exact path="/sign-in" component={LoginRegisterPage} />
           <Route exact path="/recently-viewed" component={RecentlyViewedPage} />
           <Route exact path="/favorites" component={FavoritesPage} />
+
+          <Redirect to="/" />
         </Switch>
         <Footer />
       </div>
