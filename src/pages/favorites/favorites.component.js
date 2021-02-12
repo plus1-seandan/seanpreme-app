@@ -23,7 +23,7 @@ const FavoritesPage = ({ isFavoritesFetching, fetchFavorites, favorites }) => {
     asyncFunc();
   }, []);
 
-  if (isFavoritesFetching || favorites === "fail") {
+  if ((isFavoritesFetching || favorites === "fail") && isAuthenticated()) {
     return (
       <div className="load-items-spinner">
         <span>loading...</span>
